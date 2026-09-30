@@ -3,6 +3,7 @@ import { AgencyExperience, ServicesJourney } from "@/components/agency-experienc
 import { ServicesStory } from "@/components/services/ServicesStory";
 import { FoldText } from "@/components/fold-text";
 import TextLoop from "@/components/text-loop";
+import { GlobeSection } from "@/components/GlobeSection";
 import { 
   FiArrowDownRight, 
   FiArrowUpRight, 
@@ -178,12 +179,7 @@ export default function Home() {
           <div className="principles-list reveal">{principles.map(([number, title, copy, Icon]: any) => <article className="principle" key={number}><span>{number}</span><div><FoldText as="h3" {...headingFold}>{title}</FoldText><p>{copy}</p></div><Icon aria-hidden="true" style={{ width: '15px', height: '15px' }} /></article>)}</div>
         </section>
 
-        <section className="contact-section section-shell" id="contact">
-          <div className="contact-top reveal"><p className="eyebrow"><span className="status-dot" /> Your next chapter starts here</p><span className="contact-index">KH / 2026</span></div>
-          <div className="contact-content reveal"><FoldText as="h2" {...headingFold}>Have an idea<br />worth <span>building?</span></FoldText><div className="contact-cta"><p>Let&apos;s turn it into something real.</p><a className="button button-light" href="mailto:khawitsocialmedia@gmail.com">Start a project <FiArrowUpRight aria-hidden="true" /></a></div></div>
-          <div className="contact-bottom"><a href="mailto:khawitsocialmedia@gmail.com"><FiMail aria-hidden="true" /> khawitsocialmedia@gmail.com</a><p>Good things start with a conversation.</p></div>
-          <span className="contact-decoration" aria-hidden="true">K</span>
-        </section>
+        <GlobeSection />
       </main>
       <footer className="footer section-shell">
         <div className="footer-main"><a className="footer-brand" href="#home"><Image src="/khawit-logo.jpeg" alt="KHAWIT Solutions" width={52} height={52} /><span>KHAWIT<small>SOLUTIONS</small></span></a><p>Digital products, intelligent systems, and AI-powered experiences built for what&apos;s next.</p><div className="footer-social"><a href="https://www.instagram.com/khawit_solutions/" target="_blank" rel="noreferrer" aria-label="KHAWIT on Instagram"><FaInstagram aria-hidden="true" /></a><a href="https://www.threads.com/@khawit_solutions" target="_blank" rel="noreferrer" aria-label="KHAWIT on Threads"><FaThreads aria-hidden="true" /></a><a href="https://www.linkedin.com/company/khawit-solutions-pvt-ltd/" target="_blank" rel="noreferrer" aria-label="KHAWIT on LinkedIn"><FaLinkedinIn aria-hidden="true" /></a><a href="mailto:khawitsocialmedia@gmail.com" aria-label="Email KHAWIT"><FiMail aria-hidden="true" /></a></div></div>
