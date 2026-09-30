@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { FiArrowUpRight, FiChevronDown, FiMenu, FiX } from "react-icons/fi";
+import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
 
 const services = [
-  { number: "01", title: "Web development", tag: "DIGITAL EXPERIENCES", items: ["Business websites", "Custom web applications", "Landing pages", "Interactive websites", "3D & animated websites", "E-commerce websites"] },
-  { number: "02", title: "AI solutions", tag: "INTELLIGENCE, APPLIED", items: ["AI integration", "AI chatbots", "AI assistants & copilots", "RAG / knowledge-based AI", "AI-powered web applications", "Voice AI"] },
-  { number: "03", title: "AI agents & automation", tag: "WORK THAT WORKS FOR YOU", items: ["AI agents", "Autonomous agents", "Voice agents", "Multi-agent systems", "AI workflow automation", "Business process automation", "API & tool-integrated agents"] },
-  { number: "04", title: "SaaS & product development", tag: "IDEA TO PRODUCT", items: ["SaaS applications", "AI-powered SaaS", "MVP development", "Custom software products", "Full-stack applications", "Internal business platforms", "AI-powered products"] },
-  { number: "05", title: "AI-powered business systems", tag: "BETTER BUSINESS FLOWS", items: ["Customer support systems", "Lead qualification systems", "AI sales assistants", "Knowledge management systems", "Internal AI tools", "Custom AI workflows"] },
-  { number: "06", title: "Deployment & integration", tag: "READY FOR THE REAL WORLD", items: ["API integrations", "Third-party integrations", "Database integration", "Cloud deployment", "Production setup", "AI model integration"] },
+  { number: "01", title: "Web development", tag: "DIGITAL EXPERIENCES", story: "Every journey starts with a clear front door. We shape the web experience around the people arriving and the action they need to take.", items: ["Business websites", "Custom web applications", "Landing pages", "Interactive websites", "3D & animated websites", "E-commerce websites"] },
+  { number: "02", title: "AI solutions", tag: "INTELLIGENCE, APPLIED", story: "When a digital experience needs to understand, answer, or assist, we connect AI to the knowledge and conversations that make it useful.", items: ["AI integration", "AI chatbots", "AI assistants & copilots", "RAG / knowledge-based AI", "AI-powered web applications", "Voice AI"] },
+  { number: "03", title: "AI agents & automation", tag: "FROM ANSWERS TO ACTION", story: "Next, intelligence can become action. Agents and automated workflows connect the right tools to repeatable work, with people in control.", items: ["AI agents", "Autonomous agents", "Voice agents", "Multi-agent systems", "AI workflow automation", "Business process automation", "API & tool-integrated agents"] },
+  { number: "04", title: "SaaS & product development", tag: "IDEA TO PRODUCT", story: "When an idea deserves a product of its own, we turn it into a focused MVP, a scalable SaaS, or a platform built around how teams actually work.", items: ["SaaS applications", "AI-powered SaaS", "MVP development", "Custom software products", "Full-stack applications", "Internal business platforms", "AI-powered products"] },
+  { number: "05", title: "AI-powered business systems", tag: "BETTER BUSINESS FLOWS", story: "Then the product connects to everyday operations: helping teams support customers, qualify leads, share knowledge, and move work forward.", items: ["Customer support systems", "Lead qualification systems", "AI sales assistants", "Knowledge management systems", "Internal AI tools", "Custom AI workflows"] },
+  { number: "06", title: "Deployment & integration", tag: "READY FOR THE REAL WORLD", story: "Finally, the pieces come together in production. We connect services, data, models, and cloud infrastructure so the system is ready for real use.", items: ["API integrations", "Third-party integrations", "Database integration", "Cloud deployment", "Production setup", "AI model integration"] },
 ];
 
 export function AgencyExperience() {
@@ -72,25 +72,31 @@ export function AgencyExperience() {
   );
 }
 
-export function ServicesAccordion() {
-  const [activeService, setActiveService] = useState<string | null>("01");
+export function ServicesJourney() {
+  const [activeService, setActiveService] = useState("01");
 
   return (
-    <div className="service-list reveal">
-      {services.map((service) => {
-        const isOpen = activeService === service.number;
-        const panelId = `service-panel-${service.number}`;
-        return (
-          <article className={`service-item${isOpen ? " is-open" : ""}`} key={service.number}>
-            <button className="service-trigger" type="button" aria-expanded={isOpen} aria-controls={panelId} onClick={() => setActiveService(isOpen ? null : service.number)}>
-              <span className="service-number">{service.number}</span><span className="service-title">{service.title}</span><span className="service-tag">{service.tag}</span><FiChevronDown className="service-chevron" aria-hidden="true" />
-            </button>
-            <div className="service-panel" id={panelId} aria-hidden={!isOpen}>
-              <div className="service-panel-inner"><p>Thoughtful technology, tailored to the way your business works.</p><ul>{service.items.map((item) => <li key={item}>{item}</li>)}</ul></div>
-            </div>
-          </article>
-        );
-      })}
+    <div className="service-journey">
+      <div className="service-journey-route" aria-hidden="true"><span>FIRST IDEA</span><i /><span>INTO THE REAL WORLD</span></div>
+      <div className="service-journey-grid">
+        {services.map((service) => {
+          const isActive = activeService === service.number;
+          return (
+            <article className={`service-chapter reveal${isActive ? " is-active" : ""}`} key={service.number}>
+              <h3>
+                <button className="service-chapter-trigger" type="button" aria-pressed={isActive} onClick={() => setActiveService(service.number)}>
+                  <span className="service-chapter-number">{service.number}</span>
+                  <span className="service-chapter-heading">{service.title}</span>
+                  <FiArrowUpRight aria-hidden="true" />
+                </button>
+              </h3>
+              <p className="service-chapter-tag">{service.tag}</p>
+              <p className="service-chapter-story">{service.story}</p>
+              <ul className="service-chapter-items">{service.items.map((item) => <li key={item}>{item}</li>)}</ul>
+            </article>
+          );
+        })}
+      </div>
     </div>
   );
 }
