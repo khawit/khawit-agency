@@ -51,19 +51,32 @@ function foldNodes(
   characterIndex: { current: number },
 ): ReactNode {
   if (typeof node === "string") {
-    const segments = splitBy === "char" ? Array.from(node) : node.split(/(\s+)/);
-    return segments.map((segment, index) => {
-      if (/^\s+$/.test(segment)) return segment;
-      const delay = characterIndex.current * stagger;
-      characterIndex.current += splitBy === "char" ? 1 : segment.length;
+    const wordsAndSpaces = node.split(/(\s+)/);
+    return wordsAndSpaces.map((wordOrSpace, wIndex) => {
+      if (/^\s+$/.test(wordOrSpace)) {
+        return wordOrSpace;
+      }
+      
+      const segments = splitBy === "char" ? Array.from(wordOrSpace) : [wordOrSpace];
+      
+      const parts = segments.map((segment, index) => {
+        const delay = characterIndex.current * stagger;
+        characterIndex.current += splitBy === "char" ? 1 : segment.length;
+        return (
+          <span
+            className="fold-character"
+            key={`${index}-${delay}`}
+            aria-hidden="true"
+            style={{ "--fold-delay": `${delay}s` } as CSSProperties}
+          >
+            {segment}
+          </span>
+        );
+      });
+      
       return (
-        <span
-          className="fold-character"
-          key={`${index}-${delay}`}
-          aria-hidden="true"
-          style={{ "--fold-delay": `${delay}s` } as CSSProperties}
-        >
-          {segment}
+        <span className="fold-word" key={`word-${wIndex}`} style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
+          {parts}
         </span>
       );
     });

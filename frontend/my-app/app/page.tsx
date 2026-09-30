@@ -3,7 +3,24 @@ import { AgencyExperience, ServicesJourney } from "@/components/agency-experienc
 import { ServicesStory } from "@/components/services/ServicesStory";
 import { FoldText } from "@/components/fold-text";
 import TextLoop from "@/components/text-loop";
-import { FiArrowDownRight, FiArrowUpRight, FiMail, FiMove } from "react-icons/fi";
+import { 
+  FiArrowDownRight, 
+  FiArrowUpRight, 
+  FiMail, 
+  FiMove, 
+  FiCheckCircle, 
+  FiAward, 
+  FiGlobe, 
+  FiCpu, 
+  FiZap, 
+  FiTrendingUp, 
+  FiLayers, 
+  FiLayout, 
+  FiGitBranch, 
+  FiTarget, 
+  FiUserCheck, 
+  FiUsers 
+} from "react-icons/fi";
 import { FaInstagram, FaLinkedinIn, FaThreads } from "react-icons/fa6";
 
 const clients = [
@@ -17,12 +34,12 @@ const clients = [
 ];
 
 const principles = [
-  ["01", "Built around the problem", "We start by understanding the work, the people, and the friction worth removing."],
-  ["02", "Designed for real users", "Useful software should feel clear to the people who rely on it every day."],
-  ["03", "AI where it actually helps", "We bring intelligence into a workflow when it makes the outcome meaningfully better."],
-  ["04", "Foundations that can grow", "Thoughtful architecture gives a product room to evolve beyond its first release."],
-  ["05", "Human + AI, together", "Automation can take on repetitive work while people stay in control of important decisions."],
-  ["06", "From idea to production", "One team can help shape the concept, build the system, and bring it into the real world."],
+  ["01", "Built around the problem", "We start by understanding the work, the people, and the friction worth removing.", FiTarget],
+  ["02", "Designed for real users", "Useful software should feel clear to the people who rely on it every day.", FiUserCheck],
+  ["03", "AI where it actually helps", "We bring intelligence into a workflow when it makes the outcome meaningfully better.", FiCpu],
+  ["04", "Foundations that can grow", "Thoughtful architecture gives a product room to evolve beyond its first release.", FiTrendingUp],
+  ["05", "Human + AI, together", "Automation can take on repetitive work while people stay in control of important decisions.", FiUsers],
+  ["06", "From idea to production", "One team can help shape the concept, build the system, and bring it into the real world.", FiCheckCircle],
 ];
 
 const headingFold = { splitBy: "char" as const, hinge: "top" as const, trigger: "scroll" as const, duration: 0.65, stagger: 0.045, ease: "power3.out", perspective: 700, creaseShading: 0.55 };
@@ -55,7 +72,7 @@ export default function Home() {
             <div className="hero-core"><Image className="hero-brand-mark" src="/khawit-logo.jpeg" alt="" width={180} height={180} /><i /><small>KH / 01</small></div>
             <div className="hero-node node-intent"><span className="node-number">01</span><span><small>START WITH</small><strong>Human insight</strong></span><FiMove aria-hidden="true" /></div>
             <div className="hero-node node-intelligence"><span className="node-number">02</span><span><small>BUILD WITH</small><strong>Intelligence</strong></span><i /></div>
-            <div className="hero-node node-outcome"><span className="node-number">03</span><span><small>MAKE IT</small><strong>Useful</strong></span><FiArrowUpRight aria-hidden="true" /></div>
+            <div className="hero-node node-outcome"><span className="node-number">03</span><span><small>MAKE IT</small><strong>Useful</strong></span><FiAward aria-hidden="true" /></div>
             <div className="art-footer"><span>IDEA</span><i /><span>SYSTEM</span><i /><span>IMPACT</span><span className="art-footer-mark">KHAWIT / STUDIO</span></div>
           </div>
           <a href="#about" className="scroll-cue"><span>Scroll to explore</span><span className="scroll-line" /></a>
@@ -105,7 +122,7 @@ export default function Home() {
           <div className="build-map reveal" aria-label="Our work connects websites, AI systems, agents, automation, products, and business systems">
             <div className="map-rail"><span className="map-rail-line" /></div>
             <div className="map-nodes">
-                {[["01", "Digital experiences", "Websites · Applications"], ["02", "Intelligent systems", "AI · Knowledge"], ["03", "Agents & automation", "Tools · Workflows"], ["04", "Products that scale", "SaaS · Platforms"], ["05", "Business systems", "Integrations · Operations"]].map(([number, title, detail]) => <div className="map-node" key={number}><span className="map-number">{number}</span><div><FoldText as="h3" {...headingFold} text={title}>{title}</FoldText><p>{detail}</p></div><FiArrowUpRight aria-hidden="true" /></div>)}
+                 {[["01", "Digital experiences", "Websites · Applications", FiGlobe], ["02", "Intelligent systems", "AI · Knowledge", FiCpu], ["03", "Agents & automation", "Tools · Workflows", FiZap], ["04", "Products that scale", "SaaS · Platforms", FiTrendingUp], ["05", "Business systems", "Integrations · Operations", FiLayers]].map(([number, title, detail, Icon]: any) => <div className="map-node" key={number}><span className="map-number">{number}</span><div><FoldText as="h3" {...headingFold} text={title}>{title}</FoldText><p>{detail}</p></div><Icon aria-hidden="true" style={{ width: '14px', height: '14px', color: '#937a4e' }} /></div>)}
             </div>
             <span className="map-note">ONE TEAM. END TO END.</span>
           </div>
@@ -114,8 +131,8 @@ export default function Home() {
         <section className="work-section section-shell" id="work">
           <div className="section-heading reveal"><div><p className="eyebrow">What we build</p><FoldText as="h2" {...headingFold} text="Made to move business forward.">Made to move<br /><span>business forward.</span></FoldText></div><p className="section-aside">Digital foundations and intelligent workflows, shaped around the people who use them.</p></div>
           <div className="work-grid reveal">
-            <article className="work-feature work-interface"><div className="work-meta"><span>01 / DIGITAL PRODUCTS</span><FiArrowUpRight aria-hidden="true" /></div><div className="product-window"><div className="window-bar"><span /><span /><span /><i>KH / STUDIO</i><b>MENU +</b></div><div className="window-layout"><div className="window-sidebar"><span /><span /><span /><span /></div><div className="window-content"><div className="window-label">A NEW KIND OF WORKSPACE</div><strong>Make room<br />for <em>good work.</em></strong><div className="window-button">Explore the platform <FiArrowUpRight /></div><div className="window-shape shape-a" /><div className="window-shape shape-b" /></div></div></div><div className="work-caption"><FoldText as="h3" {...headingFold}>Experiences people want to use.</FoldText><p>Websites, applications, and product interfaces built with intention.</p></div></article>
-            <article className="work-feature work-automation"><div className="work-meta"><span>02 / INTELLIGENT WORKFLOWS</span><FiArrowUpRight aria-hidden="true" /></div><div className="flow-visual"><div className="flow-glow" /><div className="flow-node flow-trigger"><span>01</span><strong>New enquiry</strong><small>Website form</small></div><div className="flow-connector connector-one" /><div className="flow-node flow-agent"><span className="agent-mark">K</span><strong>AI agent</strong><small>Understands context</small></div><div className="flow-connector connector-two" /><div className="flow-node flow-action"><span>03</span><strong>Right next step</strong><small>CRM · Team · Client</small></div><span className="flow-label">A WORKFLOW THAT THINKS AHEAD</span></div><div className="work-caption"><FoldText as="h3" {...headingFold}>Less busywork. Better momentum.</FoldText><p>Practical automation that connects the tools your business already uses.</p></div></article>
+            <article className="work-feature work-interface"><div className="work-meta"><span>01 / DIGITAL PRODUCTS</span><FiLayout aria-hidden="true" /></div><div className="product-window"><div className="window-bar"><span /><span /><span /><i>KH / STUDIO</i><b>MENU +</b></div><div className="window-layout"><div className="window-sidebar"><span /><span /><span /><span /></div><div className="window-content"><div className="window-label">A NEW KIND OF WORKSPACE</div><strong>Make room<br />for <em>good work.</em></strong><div className="window-button">Explore the platform <FiArrowUpRight /></div><div className="window-shape shape-a" /><div className="window-shape shape-b" /></div></div></div><div className="work-caption"><FoldText as="h3" {...headingFold}>Experiences people want to use.</FoldText><p>Websites, applications, and product interfaces built with intention.</p></div></article>
+            <article className="work-feature work-automation"><div className="work-meta"><span>02 / INTELLIGENT WORKFLOWS</span><FiGitBranch aria-hidden="true" /></div><div className="flow-visual"><div className="flow-glow" /><div className="flow-node flow-trigger"><span>01</span><strong>New enquiry</strong><small>Website form</small></div><div className="flow-connector connector-one" /><div className="flow-node flow-agent"><span className="agent-mark">K</span><strong>AI agent</strong><small>Understands context</small></div><div className="flow-connector connector-two" /><div className="flow-node flow-action"><span>03</span><strong>Right next step</strong><small>CRM · Team · Client</small></div><span className="flow-label">A WORKFLOW THAT THINKS AHEAD</span></div><div className="work-caption"><FoldText as="h3" {...headingFold}>Less busywork. Better momentum.</FoldText><p>Practical automation that connects the tools your business already uses.</p></div></article>
           </div>
           <p className="work-disclaimer">Illustrative examples of the systems we create. Project details are shared on request.</p>
         </section>
@@ -158,7 +175,7 @@ export default function Home() {
 
         <section className="principles-section section-shell" id="why-khawit">
           <div className="principles-intro reveal"><p className="eyebrow">The KHAWIT point of view</p><FoldText as="h2" {...headingFold}><span className="principles-heading-fit">Technology should</span><br />solve a <span>problem.</span></FoldText><p>Useful by design. Considered in every detail. Built to make a real difference to the work.</p></div>
-          <div className="principles-list reveal">{principles.map(([number, title, copy]) => <article className="principle" key={number}><span>{number}</span><div><FoldText as="h3" {...headingFold}>{title}</FoldText><p>{copy}</p></div><FiArrowUpRight aria-hidden="true" /></article>)}</div>
+          <div className="principles-list reveal">{principles.map(([number, title, copy, Icon]: any) => <article className="principle" key={number}><span>{number}</span><div><FoldText as="h3" {...headingFold}>{title}</FoldText><p>{copy}</p></div><Icon aria-hidden="true" style={{ width: '15px', height: '15px' }} /></article>)}</div>
         </section>
 
         <section className="contact-section section-shell" id="contact">

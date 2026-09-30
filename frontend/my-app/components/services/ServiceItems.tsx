@@ -22,7 +22,7 @@ export function ServiceItems({ items }: ServiceItemsProps) {
               {item}
             </span>
           </div>
-          <FiArrowUpRight className="text-[#a8aeb5] group-hover:text-[#bc9f70] transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" />
+          <FiCheckCircle className="text-[#a8aeb5] group-hover:text-[#bc9f70] transition-colors transform group-hover:scale-110 duration-300" />
         </li>
       ))}
     </ul>
