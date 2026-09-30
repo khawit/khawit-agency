@@ -35,7 +35,7 @@ export default function Home() {
         <section className="hero section-shell" id="home" aria-labelledby="hero-title">
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-copy">
-            <p className="eyebrow hero-eyebrow"><span className="status-dot" /> Independent technology studio <span className="eyebrow-year">EST. 2023</span></p>
+            <p className="eyebrow hero-eyebrow"><span className="status-dot" /> Independent technology studio <span className="eyebrow-year">EST. 2026</span></p>
             <FoldText as="h1" {...headingFold} id="hero-title" text="We build what comes next.">We build<br />what comes <span className="hero-emphasis">next<span className="hero-period">.</span></span></FoldText>
             <div className="hero-bottom">
               <p className="hero-description">Digital products, intelligent systems, and AI-powered experiences for a world that doesn&apos;t stand still.</p>
