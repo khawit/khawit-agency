@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { AgencyExperience, ServicesJourney } from "@/components/agency-experience";
+import { ServicesStory } from "@/components/services/ServicesStory";
 import { FoldText } from "@/components/fold-text";
 import TextLoop from "@/components/text-loop";
 import { FiArrowDownRight, FiArrowUpRight, FiMail, FiMove } from "react-icons/fi";
@@ -88,10 +89,16 @@ export default function Home() {
           <div className="intro-foot"><span>STRATEGY <i /> DESIGN <i /> ENGINEERING</span><span>BUILT WITH PEOPLE, FOR PEOPLE</span></div>
         </section>
 
-        <section className="services-section section-shell" id="services">
-          <div className="section-heading reveal"><div><p className="eyebrow">What we do</p><FoldText as="h2" {...headingFold} text="Complex ideas. Clear outcomes.">Complex ideas.<br /><span>Clear outcomes.</span></FoldText></div><p className="section-aside">From the first digital touchpoint to a connected system running in production, we build the parts that move your idea forward.</p></div>
-          <ServicesJourney />
+        <section className="services-section section-shell" id="services" style={{ paddingBottom: '54px' }}>
+          <div className="section-heading reveal" style={{ marginBottom: 0 }}>
+            <div>
+              <p className="eyebrow">What we do</p>
+              <FoldText as="h2" {...headingFold} text="Complex ideas. Clear outcomes.">Complex ideas.<br /><span>Clear outcomes.</span></FoldText>
+            </div>
+            <p className="section-aside">From the first digital touchpoint to a connected system running in production, we build the parts that move your idea forward.</p>
+          </div>
         </section>
+        <ServicesStory />
 
         <section className="build-section section-shell" id="approach">
           <div className="build-intro reveal"><p className="eyebrow">From possibility to product</p><FoldText as="h2" {...headingFold} text="One connected digital world.">One connected<br />digital <span>world.</span></FoldText><p>We work across the full product landscape, connecting thoughtful experiences to the systems that make them useful.</p></div>

@@ -22,7 +22,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+html { scroll-behavior: auto; scroll-padding-top: 88px; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 body.menu-open { overflow: hidden; }
 a { color: inherit; text-decoration: none; }
@@ -44,7 +44,7 @@ button { color: inherit; font: inherit; }
 
 /* Navigation */
 .site-header { position: fixed; z-index: 20; inset: 0 0 auto; display: flex; height: 84px; align-items: center; justify-content: space-between; padding: 0 clamp(24px, 7.3vw, 112px); border-bottom: 1px solid transparent; transition: height .3s ease, background .3s ease, border-color .3s ease, box-shadow .3s ease; }
-.site-header.is-scrolled { height: 70px; border-color: rgb(51 55 61 / 8%); background: rgb(249 246 240 / 92%); box-shadow: 0 5px 24px rgb(51 55 61 / 4%); backdrop-filter: blur(16px); }
+.site-header.is-scrolled { height: 70px; border-bottom: 1px solid rgba(255, 255, 255, 0.5); background: rgba(249, 246, 240, 0.82); box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); }
 .brand-lockup { display: flex; align-items: center; gap: 11px; z-index: 22; }
 .brand-logo { width: 36px; height: 36px; object-fit: cover; }
 .brand-name { display: flex; flex-direction: column; font-size: 13px; font-weight: 720; letter-spacing: .11em; line-height: 1.1; }
@@ -378,7 +378,7 @@ button { color: inherit; font: inherit; }
 @media (max-width: 760px) {
   html { scroll-padding-top: 70px; }
   .section-shell { padding-right: 24px; padding-left: 24px; }
-  .site-header, .site-header.is-scrolled { height: 68px; padding: 0 24px; background: rgb(249 246 240 / 94%); }
+  .site-header, .site-header.is-scrolled { height: 68px; padding: 0 24px; background: rgba(249, 246, 240, 0.85); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); border-bottom: 1px solid rgba(255, 255, 255, 0.4); box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04); }
   .desktop-nav, .nav-cta { display: none; }
   .menu-toggle { z-index: 22; display: grid; width: 42px; height: 42px; place-items: center; padding: 0; border: 1px solid rgb(51 55 61 / 18%); background: transparent; cursor: pointer; }
   .menu-toggle svg { width: 18px; height: 18px; }
@@ -514,3 +514,101 @@ button { color: inherit; font: inherit; }
 }
 
 @keyframes client-marquee { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+/* Overrides for cleaner spacing and geometrical background */
+@media (min-width: 761px) {
+  .hero { padding-top: 80px; padding-bottom: 50px; }
+  .intro-band { padding-top: 20px !important; padding-bottom: 15px !important; }
+  .intro-foot { margin-top: 20px !important; }
+  .services-section, .build-section, .work-section, .clients-section, .agent-section, .team-section, .process-section, .principles-section, .contact-section {
+    padding-top: 70px !important;
+    padding-bottom: 70px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero { padding-top: 90px; padding-bottom: 50px; }
+  .intro-band { padding-top: 15px !important; padding-bottom: 10px !important; }
+  .intro-foot { margin-top: 15px !important; }
+  .services-section, .build-section, .work-section, .clients-section, .agent-section, .team-section, .process-section, .principles-section, .contact-section {
+    padding-top: 45px !important;
+    padding-bottom: 45px !important;
+  }
+}
+
+.bg-geometrics {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: var(--paper);
+}
+
+.bg-geometrics::before {
+  content: "";
+  position: absolute;
+  top: -15vh;
+  right: -10vw;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  border: 1px solid rgba(188, 159, 112, 0.15); 
+}
+
+.bg-geometrics::after {
+  content: "";
+  position: absolute;
+  bottom: -5vh;
+  left: -5vw;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(95, 133, 128, 0.05), transparent 70%); 
+}
+
+.bg-geometrics-shape-1 {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  width: 1px;
+  height: 40vh;
+  background: linear-gradient(to bottom, rgba(147, 122, 78, 0), rgba(147, 122, 78, 0.3), rgba(147, 122, 78, 0));
+}
+
+.bg-geometrics-shape-2 {
+  position: absolute;
+  top: 60%;
+  right: 15%;
+  width: 25vw;
+  height: 25vw;
+  border-radius: 50%;
+  border: 1px dashed rgba(83, 110, 124, 0.15);
+  animation: rotate-slow 60s linear infinite;
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+/* Ensure text-link is golden on dark team-section background */
+.team-section .text-link {
+  color: var(--gold);
+}
+
+/* Lenis base CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
