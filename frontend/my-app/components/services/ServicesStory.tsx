@@ -1,7 +1,8 @@
 "use client";
 
-import ScrollExpand from "../ScrollExpand";
-import { ServiceItems } from "./ServiceItems";
+import { useState, useEffect, useCallback, useRef } from "react";
+import Image from "next/image";
+import { FiX, FiArrowRight } from "react-icons/fi";
 
 export const servicesData = [
   {
@@ -10,12 +11,12 @@ export const servicesData = [
     eyebrow: "DIGITAL EXPERIENCES",
     description: "Every journey starts with a clear front door. We shape the web experience around the people arriving and the action they need to take.",
     items: [
-      "Business Websites",
-      "Custom Web Applications",
-      "Landing Pages",
-      "Interactive Websites",
-      "3D & Animated Websites",
-      "E-commerce Websites",
+      { name: "Business Websites", desc: "Professional corporate websites designed to build trust and drive conversions." },
+      { name: "Custom Web Applications", desc: "Tailored web-based software built to solve specific operational challenges." },
+      { name: "Landing Pages", desc: "High-conversion single-page experiences focused on specific campaigns or products." },
+      { name: "Interactive Websites", desc: "Immersive web experiences featuring rich animations and engaging user interactions." },
+      { name: "3D & Animated Websites", desc: "Cutting-edge sites using WebGL and advanced motion to tell compelling stories." },
+      { name: "E-commerce Websites", desc: "Scalable online stores optimized for user experience and sales performance." },
     ],
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
   },
@@ -25,12 +26,12 @@ export const servicesData = [
     eyebrow: "INTELLIGENCE, APPLIED",
     description: "When a digital experience needs to understand, answer, or assist, we connect AI to the knowledge and conversations that make it useful.",
     items: [
-      "AI Integration",
-      "AI Chatbots",
-      "AI Assistants & Copilots",
-      "RAG / Knowledge-based AI",
-      "AI-powered Web Applications",
-      "Voice AI",
+      { name: "AI Integration", desc: "Connect existing products and workflows with AI capabilities that solve specific business needs." },
+      { name: "AI Chatbots", desc: "Build conversational experiences that can answer questions, guide users, and support customers." },
+      { name: "AI Assistants & Copilots", desc: "Intelligent sidekicks designed to help users perform tasks faster and more accurately." },
+      { name: "RAG / Knowledge-based AI", desc: "Systems that ground AI responses in your proprietary data for accurate, context-aware answers." },
+      { name: "AI-powered Web Applications", desc: "Next-generation web apps with intelligent features embedded at their core." },
+      { name: "Voice AI", desc: "Speech-to-text and text-to-speech solutions for natural voice interactions." },
     ],
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2165&auto=format&fit=crop"
   },
@@ -40,13 +41,13 @@ export const servicesData = [
     eyebrow: "FROM ANSWERS TO ACTION",
     description: "Next, intelligence can become action. Agents and automated workflows connect the right tools to repeatable work, with people in control.",
     items: [
-      "AI Agents",
-      "Autonomous Agents",
-      "Voice Agents",
-      "Multi-Agent Systems",
-      "AI Workflow Automation",
-      "Business Process Automation",
-      "API & Tool-integrated Agents",
+      { name: "AI Agents", desc: "Intelligent software entities capable of perceiving their environment and taking goal-directed actions." },
+      { name: "Autonomous Agents", desc: "Systems that can execute complex, multi-step tasks with minimal human intervention." },
+      { name: "Voice Agents", desc: "Conversational agents designed to interact naturally over voice channels." },
+      { name: "Multi-Agent Systems", desc: "Networks of specialized AI agents working together to solve complex problems." },
+      { name: "AI Workflow Automation", desc: "Enhancing traditional business processes with intelligent decision-making steps." },
+      { name: "Business Process Automation", desc: "Streamlining operations by automating repetitive tasks and data flows." },
+      { name: "API & Tool-integrated Agents", desc: "Agents equipped with custom tools to interact securely with your existing software stack." },
     ],
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop"
   },
@@ -56,13 +57,13 @@ export const servicesData = [
     eyebrow: "IDEA TO PRODUCT",
     description: "When an idea deserves a product of its own, we turn it into a focused MVP, a scalable SaaS, or a platform built around how teams actually work.",
     items: [
-      "SaaS Applications",
-      "AI-powered SaaS",
-      "MVP Development",
-      "Custom Software Products",
-      "Full-Stack Applications",
-      "Internal Business Platforms",
-      "AI-powered Products",
+      { name: "SaaS Applications", desc: "End-to-end development of subscription-based software platforms." },
+      { name: "AI-powered SaaS", desc: "Software-as-a-Service products with generative AI features as core differentiators." },
+      { name: "MVP Development", desc: "Rapid prototyping and building of minimum viable products to validate market fit." },
+      { name: "Custom Software Products", desc: "Bespoke software solutions tailored exactly to your unique business model." },
+      { name: "Full-Stack Applications", desc: "Comprehensive frontend and backend development for robust digital products." },
+      { name: "Internal Business Platforms", desc: "Custom portals and tools built to empower your team and streamline internal operations." },
+      { name: "AI-powered Products", desc: "Standalone digital products built entirely around novel AI capabilities." },
     ],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
   },
@@ -72,12 +73,12 @@ export const servicesData = [
     eyebrow: "BETTER BUSINESS FLOWS",
     description: "Then the product connects to everyday operations: helping teams support customers, qualify leads, share knowledge, and move work forward.",
     items: [
-      "Customer Support Systems",
-      "Lead Qualification Systems",
-      "AI Sales Assistants",
-      "Knowledge Management Systems",
-      "Internal AI Tools",
-      "Custom AI Workflows",
+      { name: "Customer Support Systems", desc: "Intelligent ticketing and automated response setups that improve resolution times." },
+      { name: "Lead Qualification Systems", desc: "Automated funnels that use AI to score and categorize inbound prospects." },
+      { name: "AI Sales Assistants", desc: "Tools that help sales teams prepare, personalize outreach, and follow up effectively." },
+      { name: "Knowledge Management Systems", desc: "Centralized platforms that make company information instantly searchable and understandable." },
+      { name: "Internal AI Tools", desc: "Custom-built applications designed to accelerate specific workflows for your team." },
+      { name: "Custom AI Workflows", desc: "Bespoke pipelines that connect various AI models and services to perform complex operational tasks." },
     ],
     image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop"
   },
@@ -87,49 +88,288 @@ export const servicesData = [
     eyebrow: "READY FOR THE REAL WORLD",
     description: "Finally, the pieces come together in production. We connect services, data, models, and cloud infrastructure so the system is ready for real use.",
     items: [
-      "API Integrations",
-      "Third-party Integrations",
-      "Database Integration",
-      "Cloud Deployment",
-      "Production Setup",
-      "AI Model Integration",
+      { name: "API Integrations", desc: "Connecting your applications with essential third-party services and data sources." },
+      { name: "Third-party Integrations", desc: "Seamless implementation of external software solutions into your ecosystem." },
+      { name: "Database Integration", desc: "Secure and scalable database architecture, migration, and management." },
+      { name: "Cloud Deployment", desc: "Setting up resilient infrastructure on AWS, Google Cloud, or Azure." },
+      { name: "Production Setup", desc: "Configuring CI/CD pipelines, monitoring, and security for live environments." },
+      { name: "AI Model Integration", desc: "Deploying and managing language models and ML services in production." },
     ],
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop"
   },
+  {
+    number: "07",
+    title: "Digital Marketing",
+    eyebrow: "GROWTH, ENGINEERED",
+    description: "Digital strategies that turn attention into meaningful engagement, helping brands build visibility, connect with the right audience, and grow.",
+    items: [
+      { name: "Social Media Marketing", desc: "Build a strategic social presence through content planning, audience targeting, positioning, engagement, and measurable growth." },
+      { name: "Social Media Management", desc: "Manage day-to-day social presence through content calendars, publishing, community engagement, profile optimization, and performance tracking." },
+      { name: "Paid Media", desc: "Use targeted paid campaigns to reach the right audiences, drive traffic, generate leads, and support measurable business outcomes." },
+      { name: "Meta Ads", desc: "Create and optimize Facebook and Instagram campaigns through audience targeting, creative testing, retargeting, and conversion-focused strategies." },
+      { name: "Google Ads", desc: "Reach high-intent audiences through search and Google advertising with targeted keywords, compelling ads, conversion tracking, and continuous optimization." },
+      { name: "AI Content Creation", desc: "Use AI-assisted workflows to produce scalable marketing content while maintaining brand voice, quality, consistency, and human oversight." },
+    ],
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
+  }
 ];
 
 export function ServicesStory() {
+  const [activeCategory, setActiveCategory] = useState<typeof servicesData[0] | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const halfRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') setActiveCategory(null);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
+
+  useEffect(() => {
+    if (activeCategory) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [activeCategory]);
+
+  useEffect(() => {
+    let animationFrameId: number;
+    let lastTimestamp: number = performance.now();
+    let exactScroll = scrollRef.current ? scrollRef.current.scrollLeft : 0;
+    
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    const scroll = (timestamp: number) => {
+      const deltaTime = timestamp - lastTimestamp;
+      lastTimestamp = timestamp;
+      
+      if (!prefersReducedMotion && !isPaused && scrollRef.current && halfRef.current) {
+        // If native scroll deviates significantly from our exactScroll, it means
+        // the user is inertia-scrolling or trackpad-scrolling. Sync it!
+        if (Math.abs(scrollRef.current.scrollLeft - exactScroll) > 2) {
+          exactScroll = scrollRef.current.scrollLeft;
+        }
+
+        // approx 40px per second for smooth readable scroll
+        exactScroll += 0.04 * deltaTime;
+        
+        const halfWidth = halfRef.current.offsetWidth;
+        
+        if (exactScroll >= halfWidth) {
+          exactScroll -= halfWidth;
+        } else if (exactScroll < 0) {
+          exactScroll += halfWidth;
+        }
+        
+        scrollRef.current.scrollLeft = exactScroll;
+      } else if (scrollRef.current && halfRef.current) {
+        // sync exactScroll when paused so it resumes correctly from manual scroll position
+        exactScroll = scrollRef.current.scrollLeft;
+        
+        const halfWidth = halfRef.current.offsetWidth;
+        if (scrollRef.current.scrollLeft >= halfWidth) {
+          scrollRef.current.scrollLeft -= halfWidth;
+          exactScroll -= halfWidth;
+        } else if (scrollRef.current.scrollLeft <= 0) {
+          scrollRef.current.scrollLeft += halfWidth;
+          exactScroll += halfWidth;
+        }
+      }
+      
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isPaused]);
+
   return (
-    <div className="relative w-full bg-[#33373d]">
-      {servicesData.map((service, index) => (
-        <ScrollExpand
-          key={service.number}
-          src={service.image}
-          alt={service.title}
-          title={`${service.number} — ${service.title}`}
-          scrollHint={index === 0 ? "Scroll to explore" : ""}
-          useWindowScroll={true}
-          overlayScrim={0.9}
-        >
-          <div className="w-full max-w-4xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 items-center md:items-start text-left px-6 mt-24 md:mt-16">
-            <div className="md:w-1/2">
-              <p className="text-[#d8c29d] text-xs font-bold tracking-[0.2em] uppercase mb-4 flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-[#5f8580]"></span>
-                {service.eyebrow}
-              </p>
-              <h2 className="text-4xl md:text-5xl font-medium text-white mb-6 leading-tight">
-                {service.title}
-              </h2>
-              <p className="text-[#ece8df] text-lg leading-relaxed">
-                {service.description}
-              </p>
+    <section className="relative w-full bg-[#33373d] py-24 overflow-hidden">
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes modal-enter {
+          from { opacity: 0; transform: scale(0.98); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .animate-modal {
+          animation: modal-enter 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fade {
+          animation: fade-in 0.3s ease-out forwards;
+        }
+      `}} />
+
+      <div 
+        ref={scrollRef}
+        className="flex w-full overflow-x-auto touch-pan-x"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
+      >
+        <div ref={halfRef} className="flex flex-shrink-0">
+          {servicesData.map((category, index) => (
+            <div key={`set1-${index}`} className="pl-6 pb-6">
+              <button 
+                className="group relative w-[300px] md:w-[400px] h-[480px] rounded-[32px] overflow-hidden cursor-pointer flex-shrink-0 transition-transform duration-500 hover:scale-[1.02] text-left border-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#bc9f70]"
+                onClick={() => setActiveCategory(category)}
+                aria-label={`View details for ${category.title}`}
+              >
+            {/* Image Background */}
+            <div className="absolute inset-0 w-full h-full bg-[#2a2d33]">
+              <Image 
+                src={category.image} 
+                alt={category.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 768px) 300px, 400px"
+              />
             </div>
-            <div className="md:w-1/2 w-full">
-              <ServiceItems items={service.items} />
+            
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#22252a] via-[#22252a]/60 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+            
+            {/* Content */}
+            <div className="absolute inset-0 p-8 flex flex-col justify-end">
+              <span className="text-[#bc9f70] font-semibold text-[10px] tracking-[0.13em] uppercase mb-4 flex items-center gap-2">
+                <span className="w-[7px] h-[7px] rounded-full bg-[#5f8580] shadow-[0_0_0_4px_rgba(95,133,128,0.12)]" />
+                {category.eyebrow}
+              </span>
+              <h3 className="text-white text-3xl font-medium mb-3">{category.number} — {category.title}</h3>
+              <p className="text-[#ece8df] text-sm leading-relaxed line-clamp-3 mb-6 transition-all duration-500 group-hover:text-white">
+                {category.description}
+              </p>
+              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white transition-all duration-500 group-hover:border-[#bc9f70] group-hover:bg-[#bc9f70] group-hover:text-[#33373d]">
+                <FiArrowRight aria-hidden="true" />
+              </div>
+            </div>
+              </button>
+            </div>
+          ))}
+        </div>
+        
+        <div className="flex flex-shrink-0">
+          {servicesData.map((category, index) => (
+            <div key={`set2-${index}`} className="pl-6 pb-6">
+              <button 
+                className="group relative w-[300px] md:w-[400px] h-[480px] rounded-[32px] overflow-hidden cursor-pointer flex-shrink-0 transition-transform duration-500 hover:scale-[1.02] text-left border-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#bc9f70]"
+                onClick={() => setActiveCategory(category)}
+                aria-label={`View details for ${category.title}`}
+              >
+                {/* Image Background */}
+                <div className="absolute inset-0 w-full h-full bg-[#2a2d33]">
+                  <Image 
+                    src={category.image} 
+                    alt={category.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 300px, 400px"
+                  />
+                </div>
+                
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#22252a] via-[#22252a]/60 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+                
+                {/* Content */}
+                <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                  <span className="text-[#bc9f70] font-semibold text-[10px] tracking-[0.13em] uppercase mb-4 flex items-center gap-2">
+                    <span className="w-[7px] h-[7px] rounded-full bg-[#5f8580] shadow-[0_0_0_4px_rgba(95,133,128,0.12)]" />
+                    {category.eyebrow}
+                  </span>
+                  <h3 className="text-white text-3xl font-medium mb-3">{category.number} — {category.title}</h3>
+                  <p className="text-[#ece8df] text-sm leading-relaxed line-clamp-3 mb-6 transition-all duration-500 group-hover:text-white">
+                    {category.description}
+                  </p>
+                  <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white transition-all duration-500 group-hover:border-[#bc9f70] group-hover:bg-[#bc9f70] group-hover:text-[#33373d]">
+                    <FiArrowRight aria-hidden="true" />
+                  </div>
+                </div>
+              </button>
+            </div>
+          ))}
+        </div>
+        {/* Final padding right to perfectly mirror the left padding of the first item when it loops */}
+        <div className="pr-6 flex-shrink-0" />
+      </div>
+
+      {/* Modal Overlay */}
+      {activeCategory && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm animate-fade" onClick={() => setActiveCategory(null)} />
+          
+          <div className="relative w-full max-w-5xl h-full max-h-[90vh] bg-[#22252a] rounded-[32px] overflow-hidden shadow-2xl flex flex-col md:flex-row animate-modal">
+            <button 
+              onClick={() => setActiveCategory(null)}
+              className="absolute top-6 right-6 z-10 w-11 h-11 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors"
+              aria-label="Close modal"
+            >
+              <FiX className="w-6 h-6" aria-hidden="true" />
+            </button>
+
+            {/* Visual Column */}
+            <div className="w-full md:w-[45%] h-64 md:h-auto relative shrink-0">
+               <Image
+                 src={activeCategory.image}
+                 alt={activeCategory.title}
+                 fill
+                 className="object-cover"
+                 sizes="(max-width: 768px) 100vw, 45vw"
+                 priority
+               />
+               <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#22252a] to-transparent opacity-95" />
+               <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end md:justify-center">
+                 <span className="text-[#bc9f70] text-7xl md:text-8xl font-light opacity-50 mb-2 md:mb-6 leading-none">{activeCategory.number}</span>
+                 <h2 id="modal-title" className="text-white text-4xl md:text-5xl font-medium leading-tight">{activeCategory.title}</h2>
+               </div>
+            </div>
+
+            {/* Content Column */}
+            <div className="w-full md:w-[55%] p-8 md:p-12 overflow-y-auto">
+              <div className="mb-10 md:mb-12">
+                <span className="text-[#bc9f70] font-semibold text-[10px] tracking-[0.13em] uppercase mb-4 flex items-center gap-2">
+                  <span className="w-[7px] h-[7px] rounded-full bg-[#5f8580] shadow-[0_0_0_4px_rgba(95,133,128,0.12)]" />
+                  {activeCategory.eyebrow}
+                </span>
+                <p className="text-[#ece8df] text-lg md:text-xl leading-relaxed mt-4">
+                  {activeCategory.description}
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                {activeCategory.items.map((item, idx) => (
+                  <div key={idx} className="group">
+                    <h4 className="text-white font-medium text-lg mb-2 flex items-baseline gap-3">
+                      <span className="text-[#bc9f70]/60 text-sm font-mono tracking-widest">{String(idx + 1).padStart(2, '0')}</span>
+                      {item.name}
+                    </h4>
+                    <p className="text-[#ece8df]/80 text-sm md:text-base leading-relaxed pl-8">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-12 pt-8 border-t border-white/10">
+                 <a href="#contact" onClick={() => setActiveCategory(null)} className="inline-flex items-center gap-3 text-white font-medium hover:text-[#bc9f70] transition-colors">
+                   Let&apos;s Work Together <FiArrowRight aria-hidden="true" />
+                 </a>
+              </div>
             </div>
           </div>
-        </ScrollExpand>
-      ))}
-    </div>
+        </div>
+      )}
+    </section>
   );
 }
