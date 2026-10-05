@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SmoothScroll } from "@/components/smooth-scroll";
 
@@ -39,6 +40,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${geistSans.variable} h-full antialiased`}
     >
+      <head>
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="ed69200c-3cbf-4b6b-ade0-d2f227fbe960"
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <div className="bg-geometrics">
           <div className="bg-geometrics-shape-1" />
