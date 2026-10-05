@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     siteName: "KHAWIT Solutions",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/khawit-logo.jpeg", width: 1200, height: 1200, alt: "KHAWIT Solutions" }],
+    images: [{ url: "/khawit-logo-nbg.png", width: 1200, height: 1200, alt: "KHAWIT Solutions" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "KHAWIT Solutions | AI, Automation & Digital Product Development",
     description: "Digital products, intelligent systems, and AI-powered experiences built for what's next.",
-    images: ["/khawit-logo.jpeg"],
+    images: ["/khawit-logo-nbg.png"],
   },
 };
 

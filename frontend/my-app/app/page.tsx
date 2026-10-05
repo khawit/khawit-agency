@@ -70,7 +70,7 @@ export default function Home() {
             <div className="orbit orbit-three" />
             <div className="hero-cross cross-one" />
             <div className="hero-cross cross-two" />
-            <div className="hero-core"><Image className="hero-brand-mark" src="/khawit-logo.jpeg" alt="" width={180} height={180} /><i /><small>KH / 01</small></div>
+            <div className="hero-core"><Image className="hero-brand-mark" src="/khawit-logo-nbg.png" alt="" width={180} height={180} style={{ height: "auto" }} /><i /><small>KH / 01</small></div>
             <div className="hero-node node-intent"><span className="node-number">01</span><span><small>START WITH</small><strong>Human insight</strong></span><FiMove aria-hidden="true" /></div>
             <div className="hero-node node-intelligence"><span className="node-number">02</span><span><small>BUILD WITH</small><strong>Intelligence</strong></span><i /></div>
             <div className="hero-node node-outcome"><span className="node-number">03</span><span><small>MAKE IT</small><strong>Useful</strong></span><FiAward aria-hidden="true" /></div>
@@ -165,7 +165,7 @@ export default function Home() {
         </section>
 
         <section className="team-section section-shell">
-          <div className="team-visual reveal"><div className="team-orbit team-orbit-a" /><div className="team-orbit team-orbit-b" /><div className="team-signal signal-a" /><div className="team-signal signal-b" /><div className="team-center"><Image className="team-brand-mark" src="/khawit-logo.jpeg" alt="" width={120} height={120} /><small>MADE<br />TOGETHER</small></div><span className="team-stamp">HUMAN BY DESIGN <i>✳</i></span><span className="team-caption">Ideas become real<br />when we build them together.</span></div>
+          <div className="team-visual reveal"><div className="team-orbit team-orbit-a" /><div className="team-orbit team-orbit-b" /><div className="team-signal signal-a" /><div className="team-signal signal-b" /><div className="team-center"><Image className="team-brand-mark" src="/khawit-logo-nbg.png" alt="" width={120} height={120} style={{ height: "auto" }} /><small>MADE<br />TOGETHER</small></div><span className="team-stamp">HUMAN BY DESIGN <i>✳</i></span><span className="team-caption">Ideas become real<br />when we build them together.</span></div>
           <div className="team-copy reveal"><p className="eyebrow">A team that builds with you</p><FoldText as="h2" {...headingFold}>Your idea doesn&apos;t<br />disappear into<br />a <span>ticket queue.</span></FoldText><p>Our team stays close to the work: learning what matters, asking better questions, and working through the details with you from concept to launch.</p><a className="text-link" href="#contact">Meet us at the start <FiArrowUpRight aria-hidden="true" /></a></div>
         </section>
 
@@ -181,9 +181,56 @@ export default function Home() {
 
         <GlobeSection />
       </main>
-      <footer className="footer section-shell">
-        <div className="footer-main"><a className="footer-brand" href="#home"><Image src="/khawit-logo.jpeg" alt="KHAWIT Solutions" width={52} height={52} /><span>KHAWIT<small>SOLUTIONS</small></span></a><p>Digital products, intelligent systems, and AI-powered experiences built for what&apos;s next.</p><div className="footer-social"><a href="https://www.instagram.com/khawit_solutions/" target="_blank" rel="noreferrer" aria-label="KHAWIT on Instagram"><FaInstagram aria-hidden="true" /></a><a href="https://www.threads.com/@khawit_solutions" target="_blank" rel="noreferrer" aria-label="KHAWIT on Threads"><FaThreads aria-hidden="true" /></a><a href="https://www.linkedin.com/company/khawit-solutions-pvt-ltd/" target="_blank" rel="noreferrer" aria-label="KHAWIT on LinkedIn"><FaLinkedinIn aria-hidden="true" /></a><a href="mailto:khawitsocialmedia@gmail.com" aria-label="Email KHAWIT"><FiMail aria-hidden="true" /></a></div></div>
-        <div className="footer-lower"><span>© {new Date().getFullYear()} KHAWIT Solutions</span><div><a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></div><span className="footer-mark">THOUGHTFULLY BUILT <i>✳</i></span></div>
+      <footer className="bg-[#1a1c1e] text-[#ece8df] py-16 md:py-24 section-shell">
+        <div className="max-w-[1500px] mx-auto flex flex-col gap-16">
+          <div className="flex flex-col md:flex-row justify-between gap-12 md:gap-8">
+            <div className="w-full md:w-1/3 flex flex-col gap-6">
+              <a href="#home" className="flex items-center gap-4 inline-block">
+                <Image src="/khawit-logo-nbg.png" alt="KHAWIT Solutions" width={48} height={48} className="w-auto h-auto object-contain" />
+                <span className="flex flex-col font-bold tracking-widest text-sm text-white">KHAWIT<small className="text-[#82837d] font-medium tracking-[0.18em] text-[10px] mt-1">SOLUTIONS</small></span>
+              </a>
+              <p className="text-[#82837d] text-sm leading-relaxed max-w-sm mt-2">
+                Digital products, intelligent systems, and AI-powered experiences built for what&apos;s next.
+              </p>
+            </div>
+            <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-8">
+              <div className="flex flex-col gap-4">
+                <h4 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">Services</h4>
+                <a href="#services" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">Web Development</a>
+                <a href="#services" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">AI Solutions</a>
+                <a href="#services" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">AI Agents & Automation</a>
+                <a href="#services" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">SaaS & Product Development</a>
+                <a href="#services" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">Digital Experiences</a>
+              </div>
+              <div className="flex flex-col gap-4">
+                <h4 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">Company</h4>
+                <a href="#about" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">About</a>
+                <a href="#services" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">Services</a>
+                <a href="#work" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">Work / Projects</a>
+                <a href="#contact" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">Contact</a>
+              </div>
+              <div className="flex flex-col gap-4">
+                <h4 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">Connect</h4>
+                <a href="https://www.linkedin.com/company/khawit-solutions-pvt-ltd/" target="_blank" rel="noreferrer" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"><FaLinkedinIn /> LinkedIn</a>
+                <a href="https://www.instagram.com/khawit_solutions/" target="_blank" rel="noreferrer" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"><FaInstagram /> Instagram</a>
+                <a href="https://www.threads.com/@khawit_solutions" target="_blank" rel="noreferrer" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"><FaThreads /> Threads</a>
+                <a href="mailto:khawitsocialmedia@gmail.com" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"><FiMail /> Email Us</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between border-t border-[#33373d] pt-12 mt-4 gap-6">
+            <p className="text-2xl md:text-3xl font-medium text-white">Have a project in mind? <br className="md:hidden" /><a href="#contact" className="text-[#bc9f70] hover:text-white transition-colors inline-flex items-center mt-2 md:mt-0 gap-2">Let&apos;s build it. <FiArrowUpRight className="w-6 h-6" /></a></p>
+          </div>
+
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#5f635f] pt-8 border-t border-[#33373d]/50">
+            <span>© {new Date().getFullYear()} KHAWIT Solutions. All rights reserved.</span>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-[#bc9f70] transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-[#bc9f70] transition-colors">Terms of Service</a>
+            </div>
+          </div>
+        </div>
       </footer>
     </>
   );

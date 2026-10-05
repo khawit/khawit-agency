@@ -114,11 +114,8 @@ export const servicesData = [
   }
 ];
 
-export function ServicesStory() {
+﻿export function ServicesStory() {
   const [activeCategory, setActiveCategory] = useState<typeof servicesData[0] | null>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const halfRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') setActiveCategory(null);
@@ -140,59 +137,8 @@ export function ServicesStory() {
     };
   }, [activeCategory]);
 
-  useEffect(() => {
-    let animationFrameId: number;
-    let lastTimestamp: number = performance.now();
-    let exactScroll = scrollRef.current ? scrollRef.current.scrollLeft : 0;
-    
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    const scroll = (timestamp: number) => {
-      const deltaTime = timestamp - lastTimestamp;
-      lastTimestamp = timestamp;
-      
-      if (!prefersReducedMotion && !isPaused && scrollRef.current && halfRef.current) {
-        // If native scroll deviates significantly from our exactScroll, it means
-        // the user is inertia-scrolling or trackpad-scrolling. Sync it!
-        if (Math.abs(scrollRef.current.scrollLeft - exactScroll) > 2) {
-          exactScroll = scrollRef.current.scrollLeft;
-        }
-
-        // approx 40px per second for smooth readable scroll
-        exactScroll += 0.04 * deltaTime;
-        
-        const halfWidth = halfRef.current.offsetWidth;
-        
-        if (exactScroll >= halfWidth) {
-          exactScroll -= halfWidth;
-        } else if (exactScroll < 0) {
-          exactScroll += halfWidth;
-        }
-        
-        scrollRef.current.scrollLeft = exactScroll;
-      } else if (scrollRef.current && halfRef.current) {
-        // sync exactScroll when paused so it resumes correctly from manual scroll position
-        exactScroll = scrollRef.current.scrollLeft;
-        
-        const halfWidth = halfRef.current.offsetWidth;
-        if (scrollRef.current.scrollLeft >= halfWidth) {
-          scrollRef.current.scrollLeft -= halfWidth;
-          exactScroll -= halfWidth;
-        } else if (scrollRef.current.scrollLeft <= 0) {
-          scrollRef.current.scrollLeft += halfWidth;
-          exactScroll += halfWidth;
-        }
-      }
-      
-      animationFrameId = requestAnimationFrame(scroll);
-    };
-
-    animationFrameId = requestAnimationFrame(scroll);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused]);
-
   return (
-    <section className="relative w-full bg-[#33373d] py-24 overflow-hidden">
+    <section className="relative w-full bg-[#33373d] py-24 px-6 md:px-12">
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes modal-enter {
           from { opacity: 0; transform: scale(0.98); }
@@ -210,101 +156,43 @@ export function ServicesStory() {
         }
       `}} />
 
-      <div 
-        ref={scrollRef}
-        className="flex w-full overflow-x-auto touch-pan-x"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        onTouchStart={() => setIsPaused(true)}
-        onTouchEnd={() => setIsPaused(false)}
-      >
-        <div ref={halfRef} className="flex flex-shrink-0">
-          {servicesData.map((category, index) => (
-            <div key={`set1-${index}`} className="pl-6 pb-6">
-              <button 
-                className="group relative w-[300px] md:w-[400px] h-[480px] rounded-[32px] overflow-hidden cursor-pointer flex-shrink-0 transition-transform duration-500 hover:scale-[1.02] text-left border-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#bc9f70]"
-                onClick={() => setActiveCategory(category)}
-                aria-label={`View details for ${category.title}`}
-              >
-            {/* Image Background */}
+      <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {servicesData.map((category, index) => (
+          <button 
+            key={index}
+            className="group relative w-full h-[480px] rounded-[32px] overflow-hidden cursor-pointer text-left border-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#bc9f70] transition-colors duration-300"
+            onClick={() => setActiveCategory(category)}
+            aria-label={`View details for ${category.title}`}
+          >
             <div className="absolute inset-0 w-full h-full bg-[#2a2d33]">
               <Image 
                 src={category.image} 
                 alt={category.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-                sizes="(max-width: 768px) 300px, 400px"
+                className="object-cover transition-opacity duration-300 opacity-80 group-hover:opacity-100"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
             
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#22252a] via-[#22252a]/60 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#22252a] via-[#22252a]/80 to-[#22252a]/20" />
             
-            {/* Content */}
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
               <span className="text-[#bc9f70] font-semibold text-[10px] tracking-[0.13em] uppercase mb-4 flex items-center gap-2">
-                <span className="w-[7px] h-[7px] rounded-full bg-[#5f8580] shadow-[0_0_0_4px_rgba(95,133,128,0.12)]" />
+                <span className="w-[7px] h-[7px] rounded-full bg-[#5f8580]" />
                 {category.eyebrow}
               </span>
               <h3 className="text-white text-3xl font-medium mb-3">{category.number} — {category.title}</h3>
-              <p className="text-[#ece8df] text-sm leading-relaxed line-clamp-3 mb-6 transition-all duration-500 group-hover:text-white">
+              <p className="text-[#ece8df] text-sm leading-relaxed line-clamp-3 mb-6 transition-colors duration-300 group-hover:text-white">
                 {category.description}
               </p>
-              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white transition-all duration-500 group-hover:border-[#bc9f70] group-hover:bg-[#bc9f70] group-hover:text-[#33373d]">
+              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white transition-colors duration-300 group-hover:border-[#bc9f70] group-hover:bg-[#bc9f70] group-hover:text-[#33373d]">
                 <FiArrowRight aria-hidden="true" />
               </div>
             </div>
-              </button>
-            </div>
-          ))}
-        </div>
-        
-        <div className="flex flex-shrink-0">
-          {servicesData.map((category, index) => (
-            <div key={`set2-${index}`} className="pl-6 pb-6">
-              <button 
-                className="group relative w-[300px] md:w-[400px] h-[480px] rounded-[32px] overflow-hidden cursor-pointer flex-shrink-0 transition-transform duration-500 hover:scale-[1.02] text-left border-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#bc9f70]"
-                onClick={() => setActiveCategory(category)}
-                aria-label={`View details for ${category.title}`}
-              >
-                {/* Image Background */}
-                <div className="absolute inset-0 w-full h-full bg-[#2a2d33]">
-                  <Image 
-                    src={category.image} 
-                    alt={category.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 768px) 300px, 400px"
-                  />
-                </div>
-                
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#22252a] via-[#22252a]/60 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
-                
-                {/* Content */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <span className="text-[#bc9f70] font-semibold text-[10px] tracking-[0.13em] uppercase mb-4 flex items-center gap-2">
-                    <span className="w-[7px] h-[7px] rounded-full bg-[#5f8580] shadow-[0_0_0_4px_rgba(95,133,128,0.12)]" />
-                    {category.eyebrow}
-                  </span>
-                  <h3 className="text-white text-3xl font-medium mb-3">{category.number} — {category.title}</h3>
-                  <p className="text-[#ece8df] text-sm leading-relaxed line-clamp-3 mb-6 transition-all duration-500 group-hover:text-white">
-                    {category.description}
-                  </p>
-                  <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white transition-all duration-500 group-hover:border-[#bc9f70] group-hover:bg-[#bc9f70] group-hover:text-[#33373d]">
-                    <FiArrowRight aria-hidden="true" />
-                  </div>
-                </div>
-              </button>
-            </div>
-          ))}
-        </div>
-        {/* Final padding right to perfectly mirror the left padding of the first item when it loops */}
-        <div className="pr-6 flex-shrink-0" />
+          </button>
+        ))}
       </div>
 
-      {/* Modal Overlay */}
       {activeCategory && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-title">
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm animate-fade" onClick={() => setActiveCategory(null)} />
@@ -318,7 +206,6 @@ export function ServicesStory() {
               <FiX className="w-6 h-6" aria-hidden="true" />
             </button>
 
-            {/* Visual Column */}
             <div className="w-full md:w-[45%] h-64 md:h-auto relative shrink-0">
                <Image
                  src={activeCategory.image}
@@ -335,7 +222,6 @@ export function ServicesStory() {
                </div>
             </div>
 
-            {/* Content Column */}
             <div className="w-full md:w-[55%] p-8 md:p-12 overflow-y-auto">
               <div className="mb-10 md:mb-12">
                 <span className="text-[#bc9f70] font-semibold text-[10px] tracking-[0.13em] uppercase mb-4 flex items-center gap-2">
@@ -363,7 +249,7 @@ export function ServicesStory() {
 
               <div className="mt-12 pt-8 border-t border-white/10">
                  <a href="#contact" onClick={() => setActiveCategory(null)} className="inline-flex items-center gap-3 text-white font-medium hover:text-[#bc9f70] transition-colors">
-                   Let&apos;s Work Together <FiArrowRight aria-hidden="true" />
+                   Let's Work Together <FiArrowRight aria-hidden="true" />
                  </a>
               </div>
             </div>

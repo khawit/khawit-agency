@@ -54,7 +54,7 @@ export function AgencyExperience() {
   return (
     <header className={`site-header${scrolled ? " is-scrolled" : ""}${menuOpen ? " menu-is-open" : ""}`}>
       <a className="brand-lockup" href="#home" onClick={closeMenu} aria-label="KHAWIT Solutions home">
-        <Image className="brand-logo" src="/khawit-logo.jpeg" alt="" width={36} height={36} priority />
+        <Image className="brand-logo" src="/khawit-logo-nbg.png" alt="KHAWIT Logo" width={40} height={40} priority style={{ objectFit: "contain" }} />
         <span className="brand-name">KHAWIT<small>SOLUTIONS</small></span>
       </a>
       <nav className="desktop-nav" aria-label="Main navigation">
