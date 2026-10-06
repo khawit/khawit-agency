@@ -78,7 +78,7 @@ export function GlobeSection() {
 
           <a
             className="button button-light inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold transition-transform hover:scale-105"
-            href="mailto:khawitsocialmedia@gmail.com"
+            href="#start-project"
           >
             Start a project <FiArrowUpRight aria-hidden="true" />
           </a>

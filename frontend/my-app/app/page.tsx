@@ -4,6 +4,7 @@ import { ServicesStory } from "@/components/services/ServicesStory";
 import { FoldText } from "@/components/fold-text";
 import TextLoop from "@/components/text-loop";
 import { GlobeSection } from "@/components/GlobeSection";
+import { ContactManager } from "@/components/ContactManager";
 import { 
   FiArrowDownRight, 
   FiArrowUpRight, 
@@ -58,7 +59,7 @@ export default function Home() {
             <div className="hero-bottom">
               <p className="hero-description">Digital products, intelligent systems, and AI-powered experiences for a world that doesn&apos;t stand still.</p>
               <div className="hero-actions">
-                <a className="button button-dark" href="#contact">Start a project <FiArrowUpRight aria-hidden="true" /></a>
+                <a className="button button-dark" href="#start-project">Start a project <FiArrowUpRight aria-hidden="true" /></a>
                 <a className="text-link" href="#work">Explore our work <FiArrowDownRight aria-hidden="true" /></a>
               </div>
             </div>
@@ -152,7 +153,7 @@ export default function Home() {
         </section>
 
         <section className="agent-section section-shell" id="ai-systems">
-          <div className="agent-copy reveal"><p className="eyebrow">More than a conversation</p><FoldText as="h2" {...headingFold}>AI that gets<br />things <span>done.</span></FoldText><p>An AI agent can understand a request, use the right tools, and take a useful next step. We connect intelligence to the systems your business depends on, with people still in control.</p><a className="text-link" href="#contact">Build a smarter workflow <FiArrowUpRight aria-hidden="true" /></a></div>
+          <div className="agent-copy reveal"><p className="eyebrow">More than a conversation</p><FoldText as="h2" {...headingFold}>AI that gets<br />things <span>done.</span></FoldText><p>An AI agent can understand a request, use the right tools, and take a useful next step. We connect intelligence to the systems your business depends on, with people still in control.</p><a className="text-link" href="#start-project">Build a smarter workflow <FiArrowUpRight aria-hidden="true" /></a></div>
           <div className="architecture reveal" aria-label="AI agent connects a user to tools, APIs, databases, and business actions">
             <div className="architecture-top"><span>KH / AGENT SYSTEM</span><span><i /> ACTIVE FLOW</span></div>
             <div className="architecture-user arch-node"><span className="arch-symbol">01</span><div><small>INPUT</small><strong>People</strong></div><span className="arch-status">REQUEST</span></div>
@@ -166,7 +167,7 @@ export default function Home() {
 
         <section className="team-section section-shell">
           <div className="team-visual reveal"><div className="team-orbit team-orbit-a" /><div className="team-orbit team-orbit-b" /><div className="team-signal signal-a" /><div className="team-signal signal-b" /><div className="team-center"><Image className="team-brand-mark" src="/khawit-logo-nbg.png" alt="" width={120} height={120} style={{ height: "auto" }} /><small>MADE<br />TOGETHER</small></div><span className="team-stamp">HUMAN BY DESIGN <i>✳</i></span><span className="team-caption">Ideas become real<br />when we build them together.</span></div>
-          <div className="team-copy reveal"><p className="eyebrow">A team that builds with you</p><FoldText as="h2" {...headingFold}>Your idea doesn&apos;t<br />disappear into<br />a <span>ticket queue.</span></FoldText><p>Our team stays close to the work: learning what matters, asking better questions, and working through the details with you from concept to launch.</p><a className="text-link" href="#contact">Meet us at the start <FiArrowUpRight aria-hidden="true" /></a></div>
+          <div className="team-copy reveal"><p className="eyebrow">A team that builds with you</p><FoldText as="h2" {...headingFold}>Your idea doesn&apos;t<br />disappear into<br />a <span>ticket queue.</span></FoldText><p>Our team stays close to the work: learning what matters, asking better questions, and working through the details with you from concept to launch.</p><a className="text-link" href="#start-project">Meet us at the start <FiArrowUpRight aria-hidden="true" /></a></div>
         </section>
 
         <section className="process-section section-shell" id="process">
@@ -220,7 +221,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between border-t border-[#33373d] pt-12 mt-4 gap-6">
-            <p className="text-2xl md:text-3xl font-medium text-white">Have a project in mind? <br className="md:hidden" /><a href="#contact" className="text-[#bc9f70] hover:text-white transition-colors inline-flex items-center mt-2 md:mt-0 gap-2">Let&apos;s build it. <FiArrowUpRight className="w-6 h-6" /></a></p>
+            <p className="text-2xl md:text-3xl font-medium text-white">Have a project in mind? <br className="md:hidden" /><a href="#start-project" className="text-[#bc9f70] hover:text-white transition-colors inline-flex items-center mt-2 md:mt-0 gap-2">Let&apos;s build it. <FiArrowUpRight className="w-6 h-6" /></a></p>
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#5f635f] pt-8 border-t border-[#33373d]/50">
@@ -232,6 +233,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <ContactManager />
     </>
   );
 }

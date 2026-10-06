@@ -60,13 +60,13 @@ export function AgencyExperience() {
       <nav className="desktop-nav" aria-label="Main navigation">
         <a href="#home">Home</a><a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a>
       </nav>
-      <a className="nav-cta" href="#contact">Start a project <FiArrowUpRight aria-hidden="true" /></a>
+      <a className="nav-cta" href="#start-project">Start a project <FiArrowUpRight aria-hidden="true" /></a>
       <button className="menu-toggle" type="button" aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen((open) => !open)}>
         {menuOpen ? <FiX aria-hidden="true" /> : <FiMenu aria-hidden="true" />}
       </button>
       <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation" aria-hidden={!menuOpen} inert={!menuOpen}>
         <div className="mobile-nav-links"><a href="#home" onClick={closeMenu}>Home <span>01</span></a><a href="#services" onClick={closeMenu}>Services <span>02</span></a><a href="#work" onClick={closeMenu}>Work <span>03</span></a><a href="#about" onClick={closeMenu}>About <span>04</span></a><a href="#contact" onClick={closeMenu}>Contact <span>05</span></a></div>
-        <a className="mobile-contact" href="mailto:khawitsocialmedia@gmail.com" onClick={closeMenu}>Let&apos;s make something matter <FiArrowUpRight /></a>
+        <a className="mobile-contact" href="#start-project" onClick={closeMenu}>Let&apos;s make something matter <FiArrowUpRight /></a>
       </nav>
     </header>
   );
