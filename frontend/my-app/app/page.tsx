@@ -71,7 +71,7 @@ export default function Home() {
             <div className="orbit orbit-three" />
             <div className="hero-cross cross-one" />
             <div className="hero-cross cross-two" />
-            <div className="hero-core"><Image className="hero-brand-mark" src="/khawit-logo-nbg.png" alt="" width={180} height={180} style={{ height: "auto" }} /><i /><small>KH / 01</small></div>
+            <div className="hero-core"><Image className="hero-brand-mark" src="/khawit-logo-nbg.png" alt="" width={180} height={180} style={{ height: "auto" }} priority /><i /><small>KH / 01</small></div>
             <div className="hero-node node-intent"><span className="node-number">01</span><span><small>START WITH</small><strong>Human insight</strong></span><FiMove aria-hidden="true" /></div>
             <div className="hero-node node-intelligence"><span className="node-number">02</span><span><small>BUILD WITH</small><strong>Intelligence</strong></span><i /></div>
             <div className="hero-node node-outcome"><span className="node-number">03</span><span><small>MAKE IT</small><strong>Useful</strong></span><FiAward aria-hidden="true" /></div>
@@ -116,8 +116,8 @@ export default function Home() {
             </div>
             <p className="section-aside">From the first digital touchpoint to a connected system running in production, we build the parts that move your idea forward.</p>
           </div>
+          <ServicesStory />
         </section>
-        <ServicesStory />
 
         <section className="build-section section-shell" id="approach">
           <div className="build-intro reveal"><p className="eyebrow">From possibility to product</p><FoldText as="h2" {...headingFold} text="One connected digital world.">One connected<br />digital <span>world.</span></FoldText><p>We work across the full product landscape, connecting thoughtful experiences to the systems that make them useful.</p></div>
@@ -188,34 +188,34 @@ export default function Home() {
             <div className="w-full md:w-1/3 flex flex-col gap-6">
               <a href="#home" className="flex items-center gap-4 inline-block">
                 <Image src="/khawit-logo-nbg.png" alt="KHAWIT Solutions" width={48} height={48} className="w-auto h-auto object-contain" />
-                <span className="flex flex-col font-bold tracking-widest text-sm text-white">KHAWIT<small className="text-[#82837d] font-medium tracking-[0.18em] text-[10px] mt-1">SOLUTIONS</small></span>
+                <span className="flex flex-col font-bold tracking-widest text-sm text-white">KHAWIT<small className="text-[#9ca3af] font-medium tracking-[0.18em] text-[10px] mt-1">SOLUTIONS</small></span>
               </a>
-              <p className="text-[#82837d] text-sm leading-relaxed max-w-sm mt-2">
+              <p className="text-[#9ca3af] text-sm leading-relaxed max-w-sm mt-2">
                 Digital products, intelligent systems, and AI-powered experiences built for what&apos;s next.
               </p>
             </div>
             <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-8">
               <div className="flex flex-col gap-4">
-                <h4 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">Services</h4>
-                <a href="#services" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">Web Development</a>
-                <a href="#services" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">AI Solutions</a>
-                <a href="#services" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">AI Agents & Automation</a>
-                <a href="#services" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">SaaS & Product Development</a>
-                <a href="#services" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">Digital Experiences</a>
+                <h2 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">Services</h2>
+                <a href="#services" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">Web Development</a>
+                <a href="#services" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">AI Solutions</a>
+                <a href="#services" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">AI Agents & Automation</a>
+                <a href="#services" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">SaaS & Product Development</a>
+                <a href="#services" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">Digital Experiences</a>
               </div>
               <div className="flex flex-col gap-4">
-                <h4 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">Company</h4>
-                <a href="#about" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">About</a>
-                <a href="#services" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">Services</a>
-                <a href="#work" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">Work / Projects</a>
-                <a href="#contact" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors">Contact</a>
+                <h2 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">Company</h2>
+                <a href="#about" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">About</a>
+                <a href="#services" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">Services</a>
+                <a href="#work" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">Work / Projects</a>
+                <a href="#contact" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">Contact</a>
               </div>
               <div className="flex flex-col gap-4">
-                <h4 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">Connect</h4>
-                <a href="https://www.linkedin.com/company/khawit-solutions-pvt-ltd/" target="_blank" rel="noreferrer" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"><FaLinkedinIn /> LinkedIn</a>
-                <a href="https://www.instagram.com/khawit_solutions/" target="_blank" rel="noreferrer" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"><FaInstagram /> Instagram</a>
-                <a href="https://www.threads.com/@khawit_solutions" target="_blank" rel="noreferrer" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"><FaThreads /> Threads</a>
-                <a href="mailto:khawitsocialmedia@gmail.com" className="text-sm text-[#82837d] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"><FiMail /> Email Us</a>
+                <h2 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">Connect</h2>
+                <a href="https://www.linkedin.com/company/khawit-solutions-pvt-ltd/" target="_blank" rel="noreferrer" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"><FaLinkedinIn /> LinkedIn</a>
+                <a href="https://www.instagram.com/khawit_solutions/" target="_blank" rel="noreferrer" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"><FaInstagram /> Instagram</a>
+                <a href="https://www.threads.com/@khawit_solutions" target="_blank" rel="noreferrer" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"><FaThreads /> Threads</a>
+                <a href="mailto:khawitsocialmedia@gmail.com" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"><FiMail /> Email Us</a>
               </div>
             </div>
           </div>
@@ -224,7 +224,7 @@ export default function Home() {
             <p className="text-2xl md:text-3xl font-medium text-white">Have a project in mind? <br className="md:hidden" /><a href="#start-project" className="text-[#bc9f70] hover:text-white transition-colors inline-flex items-center mt-2 md:mt-0 gap-2">Let&apos;s build it. <FiArrowUpRight className="w-6 h-6" /></a></p>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#5f635f] pt-8 border-t border-[#33373d]/50">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#9ca3af] pt-8 border-t border-[#33373d]/50">
             <span>© {new Date().getFullYear()} KHAWIT Solutions. All rights reserved.</span>
             <div className="flex gap-6">
               <a href="#" className="hover:text-[#bc9f70] transition-colors">Privacy Policy</a>

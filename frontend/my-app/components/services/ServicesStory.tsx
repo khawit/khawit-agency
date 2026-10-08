@@ -138,7 +138,7 @@ export const servicesData = [
   }, [activeCategory]);
 
   return (
-    <section className="relative w-full bg-[#33373d] py-24 px-6 md:px-12">
+    <div className="relative w-full bg-[#33373d] py-24 px-6 md:px-12 mt-12 rounded-[40px]">
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes modal-enter {
           from { opacity: 0; transform: scale(0.98); }
@@ -236,10 +236,10 @@ export const servicesData = [
               <div className="space-y-8">
                 {activeCategory.items.map((item, idx) => (
                   <div key={idx} className="group">
-                    <h4 className="text-white font-medium text-lg mb-2 flex items-baseline gap-3">
+                    <h3 className="text-white font-medium text-lg mb-2 flex items-baseline gap-3">
                       <span className="text-[#bc9f70]/60 text-sm font-mono tracking-widest">{String(idx + 1).padStart(2, '0')}</span>
                       {item.name}
-                    </h4>
+                    </h3>
                     <p className="text-[#ece8df]/80 text-sm md:text-base leading-relaxed pl-8">
                       {item.desc}
                     </p>
@@ -256,6 +256,6 @@ export const servicesData = [
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }

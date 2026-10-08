@@ -9,7 +9,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.khawitsolutions.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -45,6 +45,40 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           defer
           src="https://cloud.umami.is/script.js"
           data-website-id="ed69200c-3cbf-4b6b-ade0-d2f227fbe960"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "KHAWIT Solutions",
+              url: "https://www.khawitsolutions.com/",
+              logo: "https://www.khawitsolutions.com/khawit-logo-nbg.png",
+              sameAs: [
+                "https://www.linkedin.com/company/khawit-solutions-pvt-ltd/",
+                "https://www.instagram.com/khawit_solutions/",
+                "https://www.threads.com/@khawit_solutions"
+              ],
+              description: "Digital products, intelligent systems, and AI-powered experiences built for what's next.",
+              contactPoint: {
+                "@type": "ContactPoint",
+                email: "khawitsocialmedia@gmail.com",
+                contactType: "Customer Support"
+              }
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "KHAWIT Solutions",
+              url: "https://www.khawitsolutions.com/"
+            }),
+          }}
         />
       </head>
       <body className="min-h-full flex flex-col">

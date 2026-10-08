@@ -48,6 +48,8 @@ export function GlobeSection() {
     { order: 6, startLat: 37.5665, startLng: 126.978, endLat: 35.6762, endLng: 139.6503, arcAlt: 0.1, color: colors[3] },
   ];
 
+  const [showWorld, setShowWorld] = React.useState(false);
+
   return (
     <section className="contact-section section-shell relative overflow-hidden" id="contact">
       <div className="contact-top reveal relative z-20">
@@ -63,6 +65,7 @@ export function GlobeSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          onViewportEnter={() => setShowWorld(true)}
           className="text-center max-w-3xl mx-auto px-4 relative z-30"
         >
           <p className="eyebrow text-[#bc9f70] mb-3 inline-flex items-center gap-2">
@@ -86,7 +89,7 @@ export function GlobeSection() {
 
         {/* Globe canvas */}
         <div className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center top-10 opacity-70">
-          <World data={sampleArcs} globeConfig={globeConfig} />
+          {showWorld && <World data={sampleArcs} globeConfig={globeConfig} />}
         </div>
       </div>
 
