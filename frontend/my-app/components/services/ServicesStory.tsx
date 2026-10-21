@@ -1,261 +1,336 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { FiX, FiArrowRight } from "react-icons/fi";
+import Link from "next/link";
+import { FiArrowRight, FiArrowLeft, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { servicesData } from "@/data/servicesData";
 
-export const servicesData = [
-  {
-    number: "01",
-    title: "Web Development",
-    eyebrow: "DIGITAL EXPERIENCES",
-    description: "Every journey starts with a clear front door. We shape the web experience around the people arriving and the action they need to take.",
-    items: [
-      { name: "Business Websites", desc: "Professional corporate websites designed to build trust and drive conversions." },
-      { name: "Custom Web Applications", desc: "Tailored web-based software built to solve specific operational challenges." },
-      { name: "Landing Pages", desc: "High-conversion single-page experiences focused on specific campaigns or products." },
-      { name: "Interactive Websites", desc: "Immersive web experiences featuring rich animations and engaging user interactions." },
-      { name: "3D & Animated Websites", desc: "Cutting-edge sites using WebGL and advanced motion to tell compelling stories." },
-      { name: "E-commerce Websites", desc: "Scalable online stores optimized for user experience and sales performance." },
-    ],
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
-  },
-  {
-    number: "02",
-    title: "AI Solutions",
-    eyebrow: "INTELLIGENCE, APPLIED",
-    description: "When a digital experience needs to understand, answer, or assist, we connect AI to the knowledge and conversations that make it useful.",
-    items: [
-      { name: "AI Integration", desc: "Connect existing products and workflows with AI capabilities that solve specific business needs." },
-      { name: "AI Chatbots", desc: "Build conversational experiences that can answer questions, guide users, and support customers." },
-      { name: "AI Assistants & Copilots", desc: "Intelligent sidekicks designed to help users perform tasks faster and more accurately." },
-      { name: "RAG / Knowledge-based AI", desc: "Systems that ground AI responses in your proprietary data for accurate, context-aware answers." },
-      { name: "AI-powered Web Applications", desc: "Next-generation web apps with intelligent features embedded at their core." },
-      { name: "Voice AI", desc: "Speech-to-text and text-to-speech solutions for natural voice interactions." },
-    ],
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2165&auto=format&fit=crop"
-  },
-  {
-    number: "03",
-    title: "AI Agents & Automation",
-    eyebrow: "FROM ANSWERS TO ACTION",
-    description: "Next, intelligence can become action. Agents and automated workflows connect the right tools to repeatable work, with people in control.",
-    items: [
-      { name: "AI Agents", desc: "Intelligent software entities capable of perceiving their environment and taking goal-directed actions." },
-      { name: "Autonomous Agents", desc: "Systems that can execute complex, multi-step tasks with minimal human intervention." },
-      { name: "Voice Agents", desc: "Conversational agents designed to interact naturally over voice channels." },
-      { name: "Multi-Agent Systems", desc: "Networks of specialized AI agents working together to solve complex problems." },
-      { name: "AI Workflow Automation", desc: "Enhancing traditional business processes with intelligent decision-making steps." },
-      { name: "Business Process Automation", desc: "Streamlining operations by automating repetitive tasks and data flows." },
-      { name: "API & Tool-integrated Agents", desc: "Agents equipped with custom tools to interact securely with your existing software stack." },
-    ],
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    number: "04",
-    title: "SaaS & Product",
-    eyebrow: "IDEA TO PRODUCT",
-    description: "When an idea deserves a product of its own, we turn it into a focused MVP, a scalable SaaS, or a platform built around how teams actually work.",
-    items: [
-      { name: "SaaS Applications", desc: "End-to-end development of subscription-based software platforms." },
-      { name: "AI-powered SaaS", desc: "Software-as-a-Service products with generative AI features as core differentiators." },
-      { name: "MVP Development", desc: "Rapid prototyping and building of minimum viable products to validate market fit." },
-      { name: "Custom Software Products", desc: "Bespoke software solutions tailored exactly to your unique business model." },
-      { name: "Full-Stack Applications", desc: "Comprehensive frontend and backend development for robust digital products." },
-      { name: "Internal Business Platforms", desc: "Custom portals and tools built to empower your team and streamline internal operations." },
-      { name: "AI-powered Products", desc: "Standalone digital products built entirely around novel AI capabilities." },
-    ],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    number: "05",
-    title: "AI-powered Systems",
-    eyebrow: "BETTER BUSINESS FLOWS",
-    description: "Then the product connects to everyday operations: helping teams support customers, qualify leads, share knowledge, and move work forward.",
-    items: [
-      { name: "Customer Support Systems", desc: "Intelligent ticketing and automated response setups that improve resolution times." },
-      { name: "Lead Qualification Systems", desc: "Automated funnels that use AI to score and categorize inbound prospects." },
-      { name: "AI Sales Assistants", desc: "Tools that help sales teams prepare, personalize outreach, and follow up effectively." },
-      { name: "Knowledge Management Systems", desc: "Centralized platforms that make company information instantly searchable and understandable." },
-      { name: "Internal AI Tools", desc: "Custom-built applications designed to accelerate specific workflows for your team." },
-      { name: "Custom AI Workflows", desc: "Bespoke pipelines that connect various AI models and services to perform complex operational tasks." },
-    ],
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    number: "06",
-    title: "Deployment",
-    eyebrow: "READY FOR THE REAL WORLD",
-    description: "Finally, the pieces come together in production. We connect services, data, models, and cloud infrastructure so the system is ready for real use.",
-    items: [
-      { name: "API Integrations", desc: "Connecting your applications with essential third-party services and data sources." },
-      { name: "Third-party Integrations", desc: "Seamless implementation of external software solutions into your ecosystem." },
-      { name: "Database Integration", desc: "Secure and scalable database architecture, migration, and management." },
-      { name: "Cloud Deployment", desc: "Setting up resilient infrastructure on AWS, Google Cloud, or Azure." },
-      { name: "Production Setup", desc: "Configuring CI/CD pipelines, monitoring, and security for live environments." },
-      { name: "AI Model Integration", desc: "Deploying and managing language models and ML services in production." },
-    ],
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop"
-  },
-  {
-    number: "07",
-    title: "Digital Marketing",
-    eyebrow: "GROWTH, ENGINEERED",
-    description: "Digital strategies that turn attention into meaningful engagement, helping brands build visibility, connect with the right audience, and grow.",
-    items: [
-      { name: "Social Media Marketing", desc: "Build a strategic social presence through content planning, audience targeting, positioning, engagement, and measurable growth." },
-      { name: "Social Media Management", desc: "Manage day-to-day social presence through content calendars, publishing, community engagement, profile optimization, and performance tracking." },
-      { name: "Paid Media", desc: "Use targeted paid campaigns to reach the right audiences, drive traffic, generate leads, and support measurable business outcomes." },
-      { name: "Meta Ads", desc: "Create and optimize Facebook and Instagram campaigns through audience targeting, creative testing, retargeting, and conversion-focused strategies." },
-      { name: "Google Ads", desc: "Reach high-intent audiences through search and Google advertising with targeted keywords, compelling ads, conversion tracking, and continuous optimization." },
-      { name: "AI Content Creation", desc: "Use AI-assisted workflows to produce scalable marketing content while maintaining brand voice, quality, consistency, and human oversight." },
-    ],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
-  }
-];
+export { servicesData };
 
-﻿export function ServicesStory() {
-  const [activeCategory, setActiveCategory] = useState<typeof servicesData[0] | null>(null);
+export function ServicesStory() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
+  const [visibleCards, setVisibleCards] = useState<Record<string, boolean>>({
+    [servicesData[0].id]: true,
+    [servicesData[1].id]: true,
+  });
 
-  const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.key === 'Escape') setActiveCategory(null);
+  // Dragging state for mouse users
+  const isDown = useRef(false);
+  const startX = useRef(0);
+  const scrollLeftStart = useRef(0);
+  const isDragging = useRef(false);
+
+  const updateScrollState = useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+
+    const isAtStart = el.scrollLeft <= 12;
+    const isAtEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 12;
+    setCanScrollLeft(!isAtStart);
+    setCanScrollRight(!isAtEnd);
+
+    // Calculate active card index based on scroll position
+    const firstCard = el.querySelector<HTMLElement>("[data-service-card]");
+    const cardWidth = firstCard ? firstCard.offsetWidth : 420;
+    const gap = 24;
+    const index = Math.round(el.scrollLeft / (cardWidth + gap));
+    setActiveCardIndex(Math.min(Math.max(0, index), servicesData.length - 1));
+  }, []);
+
+  const scroll = (direction: "left" | "right") => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+
+    const firstCard = el.querySelector<HTMLElement>("[data-service-card]");
+    const cardWidth = firstCard ? firstCard.offsetWidth : 420;
+    const gap = 24;
+    const scrollAmount = cardWidth + gap;
+
+    el.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollToIndex = (index: number) => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const firstCard = el.querySelector<HTMLElement>("[data-service-card]");
+    const cardWidth = firstCard ? firstCard.offsetWidth : 420;
+    const gap = 24;
+    el.scrollTo({
+      left: index * (cardWidth + gap),
+      behavior: "smooth",
+    });
+  };
+
+  // IntersectionObserver for the card appearance animation on scroll
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const cards = container.querySelectorAll<HTMLElement>("[data-service-card]");
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setVisibleCards((prev) => {
+          const updated = { ...prev };
+          entries.forEach((entry) => {
+            const id = entry.target.getAttribute("data-service-card");
+            if (id) {
+              updated[id] = entry.isIntersecting;
+            }
+          });
+          return updated;
+        });
+      },
+      {
+        root: container,
+        threshold: 0.25, // triggers slight animation as card rolls into view
+      }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleKeyDown]);
+    const el = scrollContainerRef.current;
+    if (!el) return;
 
-  useEffect(() => {
-    if (activeCategory) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    updateScrollState();
+    el.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+
     return () => {
-      document.body.style.overflow = '';
+      el.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
     };
-  }, [activeCategory]);
+  }, [updateScrollState]);
+
+  // Mouse drag handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    isDown.current = true;
+    isDragging.current = false;
+    startX.current = e.pageX - scrollContainerRef.current.offsetLeft;
+    scrollLeftStart.current = scrollContainerRef.current.scrollLeft;
+  };
+
+  const handleMouseLeave = () => {
+    isDown.current = false;
+  };
+
+  const handleMouseUp = () => {
+    isDown.current = false;
+    setTimeout(() => {
+      isDragging.current = false;
+    }, 60);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDown.current || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX.current) * 1.5;
+    if (Math.abs(walk) > 8) {
+      isDragging.current = true;
+    }
+    scrollContainerRef.current.scrollLeft = scrollLeftStart.current - walk;
+  };
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (isDragging.current) {
+      e.preventDefault();
+    }
+  };
 
   return (
-    <div className="relative w-full bg-[#33373d] py-24 px-6 md:px-12 mt-12 rounded-[40px]">
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes modal-enter {
-          from { opacity: 0; transform: scale(0.98); }
-          to { opacity: 1; transform: scale(1); }
-        }
-        .animate-modal {
-          animation: modal-enter 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        .animate-fade {
-          animation: fade-in 0.3s ease-out forwards;
-        }
-      `}} />
-
-      <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {servicesData.map((category, index) => (
-          <button 
-            key={index}
-            className="group relative w-full h-[480px] rounded-[32px] overflow-hidden cursor-pointer text-left border-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#bc9f70] transition-colors duration-300"
-            onClick={() => setActiveCategory(category)}
-            aria-label={`View details for ${category.title}`}
-          >
-            <div className="absolute inset-0 w-full h-full bg-[#2a2d33]">
-              <Image 
-                src={category.image} 
-                alt={category.title}
-                fill
-                className="object-cover transition-opacity duration-300 opacity-80 group-hover:opacity-100"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-            </div>
-            
-            <div className="absolute inset-0 bg-gradient-to-t from-[#22252a] via-[#22252a]/80 to-[#22252a]/20" />
-            
-            <div className="absolute inset-0 p-8 flex flex-col justify-end">
-              <span className="text-[#bc9f70] font-semibold text-[10px] tracking-[0.13em] uppercase mb-4 flex items-center gap-2">
-                <span className="w-[7px] h-[7px] rounded-full bg-[#5f8580]" />
-                {category.eyebrow}
-              </span>
-              <h3 className="text-white text-3xl font-medium mb-3">{category.number} — {category.title}</h3>
-              <p className="text-[#ece8df] text-sm leading-relaxed line-clamp-3 mb-6 transition-colors duration-300 group-hover:text-white">
-                {category.description}
-              </p>
-              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white transition-colors duration-300 group-hover:border-[#bc9f70] group-hover:bg-[#bc9f70] group-hover:text-[#33373d]">
-                <FiArrowRight aria-hidden="true" />
-              </div>
-            </div>
-          </button>
-        ))}
+    <div className="relative w-full py-12 md:py-16 px-4 sm:px-6 md:px-10 mt-8 rounded-[24px] shadow-xl overflow-hidden border border-[#575b60]/30 select-none">
+      {/* Deep atmospheric backdrop */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-[#1e2227]">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1c22] via-[#22252a] to-[#1a1c22] opacity-95" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(188,159,112,0.04)_0%,_transparent_70%)]" />
       </div>
 
-      {activeCategory && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm animate-fade" onClick={() => setActiveCategory(null)} />
-          
-          <div className="relative w-full max-w-5xl h-full max-h-[90vh] bg-[#22252a] rounded-[32px] overflow-hidden shadow-2xl flex flex-col md:flex-row animate-modal">
-            <button 
-              onClick={() => setActiveCategory(null)}
-              className="absolute top-6 right-6 z-10 w-11 h-11 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors"
-              aria-label="Close modal"
+      {/* Heading inside the section container with Navigation Arrows */}
+      <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 max-w-[1500px] mx-auto">
+        <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.08] backdrop-blur-md border border-white/15 text-[#d8c29d] text-xs font-mono uppercase tracking-widest mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#5f8580] animate-pulse" />
+            <span>Practice Areas</span>
+          </div>
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium text-[#f9f6f0] tracking-tight leading-tight mb-4">
+            Explore our seven <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">core disciplines.</span>
+          </h3>
+          <p className="text-sm md:text-base text-[#ece8df] leading-relaxed">
+            Select any discipline below to view our complete catalogue of capabilities, commercial impact, and engineering architecture.
+          </p>
+        </div>
+
+        {/* Top-Right Navigation Controls with Counter & Arrows */}
+        <div className="flex items-center gap-3 shrink-0 self-start md:self-end">
+          <div className="flex items-center gap-2 font-mono text-xs text-[#bc9f70] bg-white/[0.08] backdrop-blur-md border border-white/15 px-3.5 py-2 rounded-full shadow-inner">
+            <span className="font-semibold text-[#f9f6f0]">0{activeCardIndex + 1}</span>
+            <span className="text-white/30">/</span>
+            <span className="text-white/60">0{servicesData.length}</span>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => scroll("left")}
+            disabled={!canScrollLeft}
+            aria-label="Previous discipline"
+            className="w-11 h-11 rounded-full border border-white/20 bg-white/[0.08] hover:bg-[#bc9f70] hover:border-[#bc9f70] hover:text-[#1a1c20] text-white flex items-center justify-center transition-all duration-300 backdrop-blur-md disabled:opacity-25 disabled:cursor-not-allowed shadow-md cursor-pointer group active:scale-95"
+          >
+            <FiArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => scroll("right")}
+            disabled={!canScrollRight}
+            aria-label="Next discipline"
+            className="w-11 h-11 rounded-full border border-white/20 bg-white/[0.08] hover:bg-[#bc9f70] hover:border-[#bc9f70] hover:text-[#1a1c20] text-white flex items-center justify-center transition-all duration-300 backdrop-blur-md disabled:opacity-25 disabled:cursor-not-allowed shadow-md cursor-pointer group active:scale-95"
+          >
+            <FiArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Horizontal Carousel Container */}
+      <div className="relative z-10 max-w-[1500px] mx-auto">
+        {/* Floating Side Left Arrow Cue */}
+        {canScrollLeft && (
+          <div className="hidden md:flex absolute left-0 top-0 bottom-6 w-20 z-20 items-center justify-start pointer-events-none bg-gradient-to-r from-[#1a1c22]/90 to-transparent">
+            <button
+              type="button"
+              onClick={() => scroll("left")}
+              aria-label="Scroll left"
+              className="pointer-events-auto ml-2 w-11 h-11 rounded-full bg-[#1a1c22]/85 border border-white/25 text-[#f9f6f0] hover:bg-[#bc9f70] hover:border-[#bc9f70] hover:text-[#1a1c20] backdrop-blur-md flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.6)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
             >
-              <FiX className="w-6 h-6" aria-hidden="true" />
+              <FiChevronLeft className="w-5 h-5" />
             </button>
+          </div>
+        )}
 
-            <div className="w-full md:w-[45%] h-64 md:h-auto relative shrink-0">
-               <Image
-                 src={activeCategory.image}
-                 alt={activeCategory.title}
-                 fill
-                 className="object-cover"
-                 sizes="(max-width: 768px) 100vw, 45vw"
-                 priority
-               />
-               <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#22252a] to-transparent opacity-95" />
-               <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end md:justify-center">
-                 <span className="text-[#bc9f70] text-7xl md:text-8xl font-light opacity-50 mb-2 md:mb-6 leading-none">{activeCategory.number}</span>
-                 <h2 id="modal-title" className="text-white text-4xl md:text-5xl font-medium leading-tight">{activeCategory.title}</h2>
-               </div>
-            </div>
+        {/* Floating Side Right Arrow Cue */}
+        {canScrollRight && (
+          <div className="hidden md:flex absolute right-0 top-0 bottom-6 w-24 z-20 items-center justify-end pointer-events-none bg-gradient-to-l from-[#1a1c22]/95 via-[#1a1c22]/70 to-transparent">
+            <button
+              type="button"
+              onClick={() => scroll("right")}
+              aria-label="Scroll right"
+              className="pointer-events-auto mr-2 w-11 h-11 rounded-full bg-[#1a1c22]/85 border border-white/25 text-[#f9f6f0] hover:bg-[#bc9f70] hover:border-[#bc9f70] hover:text-[#1a1c20] backdrop-blur-md flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.6)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <FiChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        )}
 
-            <div className="w-full md:w-[55%] p-8 md:p-12 overflow-y-auto">
-              <div className="mb-10 md:mb-12">
-                <span className="text-[#bc9f70] font-semibold text-[10px] tracking-[0.13em] uppercase mb-4 flex items-center gap-2">
-                  <span className="w-[7px] h-[7px] rounded-full bg-[#5f8580] shadow-[0_0_0_4px_rgba(95,133,128,0.12)]" />
-                  {activeCategory.eyebrow}
-                </span>
-                <p className="text-[#ece8df] text-lg md:text-xl leading-relaxed mt-4">
-                  {activeCategory.description}
-                </p>
-              </div>
+        {/* Scrollable Track */}
+        <div
+          ref={scrollContainerRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          className="flex gap-6 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory overscroll-x-contain scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden cursor-grab active:cursor-grabbing px-1"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
+          {servicesData.map((category, index) => {
+            const isVisible = visibleCards[category.id] ?? index <= 1;
+            return (
+              <Link
+                key={category.id}
+                data-service-card={category.id}
+                href={`/services/${category.id}`}
+                onClick={handleCardClick}
+                className={`group relative w-[85vw] sm:w-[380px] md:w-[420px] lg:w-[450px] shrink-0 h-[480px] rounded-[20px] overflow-hidden cursor-pointer text-left bg-[#33373d]/75 backdrop-blur-md border border-[#575b60]/50 hover:border-[#bc9f70]/70 shadow-[0_16px_36px_-8px_rgba(0,0,0,0.45)] hover:shadow-[0_20px_45px_-8px_rgba(188,159,112,0.25)] snap-start flex flex-col justify-end p-8 transition-all duration-700 ease-out transform ${
+                  isVisible
+                    ? "opacity-100 scale-100 translate-y-0"
+                    : "opacity-60 scale-[0.96] translate-y-3"
+                }`}
+                aria-label={`Explore ${category.title}`}
+              >
+                {/* Top subtle edge sheen */}
+                <div 
+                  className="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none group-hover:via-[#bc9f70] transition-colors duration-300" 
+                />
 
-              <div className="space-y-8">
-                {activeCategory.items.map((item, idx) => (
-                  <div key={idx} className="group">
-                    <h3 className="text-white font-medium text-lg mb-2 flex items-baseline gap-3">
-                      <span className="text-[#bc9f70]/60 text-sm font-mono tracking-widest">{String(idx + 1).padStart(2, '0')}</span>
-                      {item.name}
-                    </h3>
-                    <p className="text-[#ece8df]/80 text-sm md:text-base leading-relaxed pl-8">
-                      {item.desc}
-                    </p>
+                {/* Background image preview with dark gradient overlay */}
+                <div className="absolute inset-0 w-full h-full -z-10 bg-[#22252a]/70">
+                  <Image
+                    src={category.image}
+                    alt={category.imageAlt || category.title}
+                    fill
+                    className="object-cover transition-all duration-700 opacity-55 group-hover:opacity-85 group-hover:scale-105 pointer-events-none"
+                    sizes="(max-width: 768px) 85vw, 450px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a1c22] via-[#22252a]/85 to-transparent pointer-events-none" />
+                </div>
+
+                {/* Card Content with subtle lift on hover */}
+                <div className="relative z-10 transition-transform duration-500 group-hover:-translate-y-1">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[#bc9f70] font-semibold text-[10px] tracking-[0.15em] uppercase flex items-center gap-2 bg-[#bc9f70]/15 px-3 py-1 rounded-full border border-[#bc9f70]/25 backdrop-blur-sm">
+                      <span className="w-[6px] h-[6px] rounded-full bg-[#5f8580]" />
+                      {category.eyebrow}
+                    </span>
                   </div>
-                ))}
-              </div>
 
-              <div className="mt-12 pt-8 border-t border-white/10">
-                 <a href="#contact" onClick={() => setActiveCategory(null)} className="inline-flex items-center gap-3 text-white font-medium hover:text-[#bc9f70] transition-colors">
-                   Let's Work Together <FiArrowRight aria-hidden="true" />
-                 </a>
-              </div>
-            </div>
+                  <h3 className="text-[#f9f6f0] text-2xl lg:text-3xl font-medium mb-3 group-hover:text-[#d8c29d] transition-colors leading-tight">
+                    <span className="text-[#bc9f70] font-mono text-xl mr-2">{category.number} —</span>
+                    {category.title}
+                  </h3>
+
+                  <p className="text-[#ece8df] text-sm leading-relaxed line-clamp-3 mb-6 transition-colors duration-300 group-hover:text-white font-normal">
+                    {category.description}
+                  </p>
+
+                  <div className="flex items-center justify-between pt-4 border-t border-white/15">
+                    <span className="text-xs text-[#bc9f70] font-medium tracking-wide uppercase group-hover:text-white transition-colors">
+                      Explore {category.title}
+                    </span>
+                    <div className="w-9 h-9 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center text-white transition-all duration-300 group-hover:border-[#bc9f70] group-hover:bg-[#bc9f70] group-hover:text-[#1a1c20] group-hover:translate-x-1 shadow-sm">
+                      <FiArrowRight aria-hidden="true" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Bottom Interactive Indicators */}
+        <div className="flex items-center justify-between pt-4 mt-2 border-t border-white/10">
+          <div className="flex items-center gap-2" role="tablist" aria-label="Discipline cards progress">
+            {servicesData.map((category, idx) => (
+              <button
+                key={category.id}
+                type="button"
+                onClick={() => scrollToIndex(idx)}
+                aria-label={`Go to discipline 0${idx + 1}: ${category.title}`}
+                className={`transition-all duration-300 rounded-full h-1.5 cursor-pointer ${
+                  idx === activeCardIndex
+                    ? "w-8 bg-[#bc9f70]"
+                    : "w-2 bg-white/20 hover:bg-white/45"
+                }`}
+              />
+            ))}
+          </div>
+
+          <div className="text-[11px] font-mono tracking-widest text-[#a8aeb5] uppercase">
+            <span>07 Core Disciplines</span>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

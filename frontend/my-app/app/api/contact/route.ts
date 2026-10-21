@@ -3,12 +3,16 @@ import nodemailer from 'nodemailer';
 
 const ALLOWED_SERVICES = [
   'Web Development',
-  'AI Solutions',
-  'AI Agents & Automation',
+  'Conversational AI & Knowledge Systems (RAG)',
+  'Autonomous AI Agents & Automation',
   'SaaS & Product',
-  'AI-powered Systems',
+  'Enterprise AI & Business Operations',
   'Deployment',
   'Digital Marketing',
+  // Backwards compatibility aliases
+  'AI Solutions',
+  'AI Agents & Automation',
+  'AI-powered Systems',
   'Other'
 ];
 

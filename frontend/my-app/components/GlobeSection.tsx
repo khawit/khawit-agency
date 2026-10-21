@@ -1,12 +1,19 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "motion/react";
 import dynamic from "next/dynamic";
 import { FiArrowUpRight, FiGlobe } from "react-icons/fi";
 
+// Eagerly prefetch the 3D Globe bundle and assets so it is ready on site load
+if (typeof window !== "undefined") {
+  import("./ui/globe");
+}
+
 const World = dynamic(() => import("./ui/globe").then((m) => m.World), {
   ssr: false,
+  loading: () => null,
 });
 
 export function GlobeSection() {
@@ -50,6 +57,11 @@ export function GlobeSection() {
 
   const [showWorld, setShowWorld] = React.useState(false);
 
+  React.useEffect(() => {
+    // Mount and initialize the 3D globe immediately on site start
+    setShowWorld(true);
+  }, []);
+
   return (
     <section className="contact-section section-shell relative overflow-hidden" id="contact">
       <div className="contact-top reveal relative z-20">
@@ -65,26 +77,27 @@ export function GlobeSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          onViewportEnter={() => setShowWorld(true)}
           className="text-center max-w-3xl mx-auto px-4 relative z-30"
         >
           <p className="eyebrow text-[#bc9f70] mb-3 inline-flex items-center gap-2">
             <FiGlobe /> Worldwide Reach &amp; Partnerships
           </p>
-          <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight leading-tight mb-4">
+          <h2 className="text-3xl md:text-5xl font-medium text-[#f9f6f0] tracking-tight leading-tight mb-4">
             Let us know where you are from <br />
-            <span className="text-[#bc9f70] italic font-normal">&amp; what&apos;s your idea.</span>
+            <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm inline-block mt-1">
+              &amp; what&apos;s your idea.
+            </span>
           </h2>
-          <p className="text-sm md:text-base text-[#a8aeb5] max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-sm md:text-base text-[#ece8df]/85 max-w-xl mx-auto mb-8 leading-relaxed">
             From first concepts to scalable systems running in production, we partner with visionaries across the globe to turn ambitious ideas into reality.
           </p>
 
-          <a
-            className="button button-light inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold transition-transform hover:scale-105"
-            href="#start-project"
+          <Link
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#33373d] hover:bg-[#bc9f70] text-white hover:text-[#1a1c20] text-sm font-semibold transition-all duration-300 shadow-md hover:-translate-y-0.5"
+            href="/start-project"
           >
             Start a project <FiArrowUpRight aria-hidden="true" />
-          </a>
+          </Link>
         </motion.div>
 
         {/* Globe canvas */}
@@ -93,7 +106,7 @@ export function GlobeSection() {
         </div>
       </div>
 
-      <div className="contact-bottom relative z-20 border-t border-white/10 pt-6 mt-6 flex flex-col md:flex-row justify-between items-center text-xs text-[#a8aeb5]">
+      <div className="contact-bottom relative z-20 border-t border-white/10 pt-6 mt-6 flex flex-col md:flex-row justify-between items-center text-xs text-[#ece8df]/70">
         <a className="email-link hover:text-[#bc9f70] transition-colors" href="mailto:khawitsocialmedia@gmail.com">
           khawitsocialmedia@gmail.com
         </a>

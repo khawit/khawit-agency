@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-namespace */
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Color, Scene, Fog, Vector3 } from "three";
 
 if (typeof console !== 'undefined') {
@@ -106,14 +107,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     ...globeConfig,
   };
 
-  useEffect(() => {
-    if (globeRef.current) {
-      _buildData();
-      _buildMaterial();
-    }
-  }, [globeRef.current, data]);
-
-  const _buildMaterial = () => {
+  const buildMaterial = useCallback(() => {
     if (!globeRef.current) return;
 
     const globeMaterial = globeRef.current.globeMaterial() as any;
@@ -121,9 +115,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
     globeMaterial.emissive = new Color(defaultProps.emissive);
     globeMaterial.emissiveIntensity = defaultProps.emissiveIntensity || 0.1;
     globeMaterial.shininess = defaultProps.shininess || 0.9;
-  };
+  }, [defaultProps.globeColor, defaultProps.emissive, defaultProps.emissiveIntensity, defaultProps.shininess]);
 
-  const _buildData = () => {
+  const buildData = useCallback(() => {
     const points = [];
     for (let i = 0; i < data.length; i++) {
       const arc = data[i];
@@ -149,7 +143,14 @@ export function Globe({ globeConfig, data }: WorldProps) {
     );
 
     setGlobeData(filteredPoints);
-  };
+  }, [data, defaultProps.pointSize]);
+
+  useEffect(() => {
+    if (globeRef.current) {
+      buildData();
+      buildMaterial();
+    }
+  }, [buildData, buildMaterial]);
 
   useEffect(() => {
     if (globeRef.current && globeData.length > 0) {
@@ -257,12 +258,12 @@ export function World(props: WorldProps) {
 }
 
 export function hexToRgb(hex: string) {
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, function (m, r, g, b) {
     return r + r + g + g + b + b;
   });
 
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
         r: parseInt(result[1], 16),

@@ -1,6 +1,6 @@
 "use client";
 
-import { FiArrowUpRight, FiCheckCircle } from "react-icons/fi";
+import { FiCheckCircle } from "react-icons/fi";
 
 interface ServiceItemsProps {
   items: string[];
