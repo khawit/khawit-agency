@@ -19,14 +19,14 @@ const headingFold = {
 
 export function TeamCollaboration() {
   return (
-    <section className="relative py-24 md:py-32 section-shell overflow-hidden">
+    <section className="relative pt-6 md:pt-8 pb-6 md:pb-8 section-shell overflow-hidden">
       {/* Subtle ambient lighting behind glass card */}
       <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-gradient-to-r from-[#bc9f70]/10 via-[#5f8580]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
-        <div className="p-8 sm:p-14 rounded-[24px] bg-[#41454b]/75 backdrop-blur-xl border border-[#575b60]/50 hover:border-[#bc9f70]/40 shadow-xl transition-all duration-300 relative overflow-hidden reveal">
+        <div className="p-8 sm:p-14 rounded-[24px] bg-[#41454b]/75 backdrop-blur-xl border border-[#575b60]/50 shadow-xl relative overflow-hidden reveal">
           {/* Top specular highlight edge glow */}
-          <div className="absolute top-0 left-10 right-10 h-[1px] bg-gradient-to-r from-transparent via-[#bc9f70]/40 to-transparent pointer-events-none" />
+          <div className="absolute top-0 left-10 right-10 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Column: Layered Ticket Cards Visual */}
@@ -36,7 +36,7 @@ export function TeamCollaboration() {
                   src="/layered-ticket-cards.png"
                   alt="Layered ticket cards illustration showing technical discovery through project launch workflow"
                   fill
-                  className="object-contain object-center drop-shadow-2xl transition-transform duration-700 hover:scale-[1.03]"
+                  className="object-contain object-center drop-shadow-2xl"
                   sizes="(max-width: 1024px) 100vw, 420px"
                   priority
                 />
@@ -53,7 +53,7 @@ export function TeamCollaboration() {
               <FoldText as="h2" {...headingFold}>
                 <span className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#f9f6f0] leading-tight block mb-6">
                   Your idea doesn&apos;t disappear into a <br />
-                  <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">ticket queue.</span>
+                  <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">ticket queue.</span>
                 </span>
               </FoldText>
 
@@ -63,7 +63,7 @@ export function TeamCollaboration() {
 
               <Link
                 href="/start-project"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#33373d] text-white hover:bg-[#bc9f70] hover:text-[#1a1c20] text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-md hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#33373d] text-white hover:bg-[#bc9f70] hover:text-[#1a1c20] text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-md"
               >
                 <span>Meet us at the start</span>
                 <FiArrowUpRight className="w-4 h-4" />

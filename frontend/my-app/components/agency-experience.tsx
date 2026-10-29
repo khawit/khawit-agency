@@ -150,130 +150,202 @@ export function AgencyExperience() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-      <div
-        className={`pointer-events-auto flex items-center justify-between gap-3 md:gap-7 px-4 md:px-6 py-2 md:py-2.5 rounded-full border border-[#e5dfd4]/90 bg-[#f9f6f0]/92 backdrop-blur-xl shadow-[0_12px_32px_-6px_rgba(51,55,61,0.12),inset_0_1px_2px_rgba(255,255,255,0.95)] transition-all duration-300 ${
-          scrolled ? "bg-[#f0ece3]/95 border-[#d9d5cc] shadow-md scale-[0.98]" : ""
-        }`}
-      >
-        {/* KHAWIT Logo on the LEFT (Icon only, no text) */}
+    <>
+      {/* 1. Mobile & Tablet Top Bar (Fixed, Non-Floating, Left Logo, Right Hamburger) */}
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 sm:px-8 py-3.5 sm:py-4 bg-[#f9f6f0]/95 backdrop-blur-md border-b border-[#e5dfd4]/80 lg:hidden shadow-xs transition-colors">
+        {/* KHAWIT Logo on the LEFT (Slim & Minimal) */}
         <Link
           href="/"
           onClick={closeMenu}
           aria-label="KHAWIT Home"
-          className="flex items-center shrink-0 pr-3 md:pr-4 border-r border-[#33373d]/15 hover:opacity-80 transition-opacity"
+          className="flex items-center shrink-0 hover:opacity-80 transition-opacity"
         >
           <Image
             src="/khawit-logo-nbg.png"
             alt="KHAWIT technology studio logo"
-            width={32}
-            height={32}
+            width={28}
+            height={28}
             priority
-            className="w-7 h-7 md:w-8 md:h-8 object-contain"
+            className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
             style={{ width: "auto", height: "auto" }}
           />
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-6 text-xs text-[#33373d] font-medium" aria-label="Main navigation">
-          <Link href="/" className="hover:text-[#937a4e] transition-colors">Home</Link>
-          <Link href="/#why-khawit" className="hover:text-[#937a4e] transition-colors">Why KHAWIT</Link>
-          <Link href="/#services" className="hover:text-[#937a4e] transition-colors">Services</Link>
-          <Link href="/#work" className="hover:text-[#937a4e] transition-colors">Work</Link>
-          <Link href="/#process" className="hover:text-[#937a4e] transition-colors">Process</Link>
-          <Link href="/about" className="hover:text-[#937a4e] transition-colors">About</Link>
-          <Link href="/#contact" className="hover:text-[#937a4e] transition-colors">Contact</Link>
-        </nav>
+        {/* Hamburger Menu on the RIGHT */}
+        <button
+          type="button"
+          onClick={() => setMenuOpen(true)}
+          className="w-10 h-10 -mr-2 rounded-full flex items-center justify-center text-[#1a1c1e] hover:bg-black/5 active:scale-95 transition-all focus:outline-hidden"
+          aria-label="Open navigation menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-sidebar"
+        >
+          <FiMenu className="w-5 h-5 text-[#1a1c1e]" aria-hidden="true" />
+        </button>
+      </header>
 
-        {/* Start a project CTA */}
-        <div className="flex items-center gap-2">
+      {/* 2. Desktop Floating Pill Navbar (Centered, lg+ only) */}
+      <header className="fixed top-6 left-0 right-0 z-50 justify-center px-4 pointer-events-none hidden lg:flex">
+        <div
+          className={`pointer-events-auto flex items-center justify-between gap-7 px-6 py-2.5 rounded-full border border-[#e5dfd4]/90 bg-[#f9f6f0]/92 backdrop-blur-xl shadow-[0_12px_32px_-6px_rgba(51,55,61,0.12),inset_0_1px_2px_rgba(255,255,255,0.95)] transition-all duration-300 ${
+            scrolled ? "bg-[#f0ece3]/95 border-[#d9d5cc] shadow-md scale-[0.98]" : ""
+          }`}
+        >
+          {/* Logo on the left */}
           <Link
-            href="/start-project"
-            className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-1.5 rounded-full bg-[#33373d] !text-white hover:bg-[#bc9f70] hover:!text-[#1a1c1e] transition-all duration-200 shadow-sm"
-            style={{ color: "#ffffff" }}
+            href="/"
+            aria-label="KHAWIT Home"
+            className="flex items-center shrink-0 pr-4 border-r border-[#33373d]/15 hover:opacity-80 transition-opacity"
           >
-            <span className="font-semibold text-white">Start a project</span>
-            <FiArrowUpRight className="w-3.5 h-3.5 text-white" aria-hidden="true" />
-          </Link>
-
-          {/* Mobile menu toggle */}
-          <button
-            className="md:hidden flex items-center justify-center w-8 h-8 rounded-full bg-black/5 text-[#33373d] hover:bg-black/10 transition-colors ml-1"
-            type="button"
-            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-navigation"
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            {menuOpen ? <FiX className="w-4 h-4" aria-hidden="true" /> : <FiMenu className="w-4 h-4" aria-hidden="true" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Navigation Drawer */}
-      <nav
-        id="mobile-navigation"
-        className={`pointer-events-auto fixed inset-0 z-40 flex flex-col justify-between p-8 bg-[#f9f6f0]/98 text-[#33373d] backdrop-blur-2xl transition-all duration-300 md:hidden ${
-          menuOpen ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none -translate-y-4"
-        }`}
-        aria-label="Mobile navigation"
-        aria-hidden={!menuOpen}
-        inert={!menuOpen}
-      >
-        <div className="flex justify-between items-center pb-6 border-b border-[#e5dfd4]">
-          <div className="flex items-center gap-3">
             <Image
               src="/khawit-logo-nbg.png"
               alt="KHAWIT technology studio logo"
-              width={28}
-              height={28}
+              width={26}
+              height={26}
+              priority
               className="w-7 h-7 object-contain"
               style={{ width: "auto", height: "auto" }}
             />
-            <span className="text-xs font-mono text-[#937a4e] uppercase tracking-wider font-semibold">Navigation</span>
-          </div>
-          <button
-            onClick={closeMenu}
-            className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-[#33373d]"
-            aria-label="Close menu"
+          </Link>
+
+          {/* Desktop Navigation Links */}
+          <nav className="flex items-center gap-6 text-xs text-[#33373d] font-medium" aria-label="Main navigation">
+            <Link href="/" className="hover:text-[#937a4e] transition-colors">Home</Link>
+            <Link href="/#why-khawit" className="hover:text-[#937a4e] transition-colors">Why KHAWIT</Link>
+            <Link href="/services" className="hover:text-[#937a4e] transition-colors">Services</Link>
+            <Link href="/#work" className="hover:text-[#937a4e] transition-colors">Work</Link>
+            <Link href="/#process" className="hover:text-[#937a4e] transition-colors">Process</Link>
+            <Link href="/about" className="hover:text-[#937a4e] transition-colors">About</Link>
+            <Link href="/#contact" className="hover:text-[#937a4e] transition-colors">Contact</Link>
+          </nav>
+
+          {/* Desktop CTA Button */}
+          <Link
+            href="/start-project"
+            aria-label="Start a project"
+            className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-[#33373d] text-white hover:bg-[#bc9f70] hover:text-[#1a1c1e] transition-all duration-200 shadow-sm shrink-0 group"
           >
-            <FiX className="w-5 h-5" />
-          </button>
-        </div>
-        <div className="flex flex-col gap-4 py-8">
-          <Link href="/" onClick={closeMenu} className="text-2xl font-normal text-[#33373d] hover:text-[#937a4e] transition-colors flex justify-between">
-            Home <span className="text-xs font-mono text-[#937a4e]">01</span>
-          </Link>
-          <Link href="/#why-khawit" onClick={closeMenu} className="text-2xl font-normal text-[#33373d] hover:text-[#937a4e] transition-colors flex justify-between">
-            Why KHAWIT <span className="text-xs font-mono text-[#937a4e]">02</span>
-          </Link>
-          <Link href="/#services" onClick={closeMenu} className="text-2xl font-normal text-[#33373d] hover:text-[#937a4e] transition-colors flex justify-between">
-            Services <span className="text-xs font-mono text-[#937a4e]">03</span>
-          </Link>
-          <Link href="/#work" onClick={closeMenu} className="text-2xl font-normal text-[#33373d] hover:text-[#937a4e] transition-colors flex justify-between">
-            Work <span className="text-xs font-mono text-[#937a4e]">04</span>
-          </Link>
-          <Link href="/#process" onClick={closeMenu} className="text-2xl font-normal text-[#33373d] hover:text-[#937a4e] transition-colors flex justify-between">
-            Process <span className="text-xs font-mono text-[#937a4e]">05</span>
-          </Link>
-          <Link href="/about" onClick={closeMenu} className="text-2xl font-normal text-[#33373d] hover:text-[#937a4e] transition-colors flex justify-between">
-            About <span className="text-xs font-mono text-[#937a4e]">06</span>
-          </Link>
-          <Link href="/#contact" onClick={closeMenu} className="text-2xl font-normal text-[#33373d] hover:text-[#937a4e] transition-colors flex justify-between">
-            Contact <span className="text-xs font-mono text-[#937a4e]">07</span>
+            <span className="text-xs font-semibold text-white mr-1.5 group-hover:text-[#1a1c1e] transition-colors">Start a project</span>
+            <FiArrowUpRight className="w-3.5 h-3.5 text-white group-hover:text-[#1a1c1e] transition-colors" aria-hidden="true" />
           </Link>
         </div>
-        <Link
-          className="w-full py-4 rounded-full bg-[#33373d] !text-white hover:bg-[#bc9f70] hover:!text-[#1a1c1e] font-semibold text-center text-sm flex items-center justify-center gap-2 shadow-lg transition-colors"
-          href="/start-project"
-          onClick={closeMenu}
-          style={{ color: "#ffffff" }}
-        >
-          <span className="font-semibold text-white">Start a project</span>
-          <FiArrowUpRight className="w-4 h-4 text-white" />
-        </Link>
-      </nav>
-    </header>
+      </header>
+
+      {/* 3. Mobile & Tablet Contrasting Sidebar (Slides from the RIGHT) */}
+      {/* Backdrop overlay */}
+      <div
+        className={`fixed inset-0 z-50 bg-black/65 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
+          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={closeMenu}
+        aria-hidden="true"
+      />
+
+      {/* Sidebar Panel in High-Contrast Luxury Obsidian Palette */}
+      <aside
+        id="mobile-sidebar"
+        className={`fixed top-0 bottom-0 right-0 z-50 w-[84vw] max-w-sm sm:max-w-md bg-[#121417] text-[#f9f6f0] shadow-[0_20px_50px_rgba(0,0,0,0.6)] border-l border-white/10 transition-transform duration-300 ease-out flex flex-col justify-between p-6 sm:p-8 overflow-y-auto lg:hidden ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        aria-label="Mobile navigation"
+        aria-hidden={!menuOpen}
+        inert={!menuOpen ? true : undefined}
+      >
+        {/* Top Header of Sidebar: Brand indicator & Close Button */}
+        <div>
+          <div className="flex justify-between items-center pb-5 border-b border-white/10">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-[#bc9f70] animate-pulse" />
+              <span className="text-xs font-mono text-[#bc9f70] uppercase tracking-widest font-semibold">
+                KHAWIT · STUDIO
+              </span>
+            </div>
+            <button
+              onClick={closeMenu}
+              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-[#f9f6f0] flex items-center justify-center transition-colors"
+              aria-label="Close menu"
+            >
+              <FiX className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Navigation Links with Numbers */}
+          <nav className="flex flex-col gap-1 py-6" aria-label="Sidebar navigation links">
+            <Link
+              href="/"
+              onClick={closeMenu}
+              className="text-xl sm:text-2xl font-light text-[#f9f6f0] hover:text-[#bc9f70] transition-colors flex justify-between items-center py-2.5 border-b border-white/5 group"
+            >
+              <span className="group-hover:translate-x-1 transition-transform">Home</span>
+              <span className="text-xs font-mono text-[#bc9f70]/80 group-hover:text-[#bc9f70]">01</span>
+            </Link>
+            <Link
+              href="/#why-khawit"
+              onClick={closeMenu}
+              className="text-xl sm:text-2xl font-light text-[#f9f6f0] hover:text-[#bc9f70] transition-colors flex justify-between items-center py-2.5 border-b border-white/5 group"
+            >
+              <span className="group-hover:translate-x-1 transition-transform">Why KHAWIT</span>
+              <span className="text-xs font-mono text-[#bc9f70]/80 group-hover:text-[#bc9f70]">02</span>
+            </Link>
+            <Link
+              href="/services"
+              onClick={closeMenu}
+              className="text-xl sm:text-2xl font-light text-[#f9f6f0] hover:text-[#bc9f70] transition-colors flex justify-between items-center py-2.5 border-b border-white/5 group"
+            >
+              <span className="group-hover:translate-x-1 transition-transform">Services</span>
+              <span className="text-xs font-mono text-[#bc9f70]/80 group-hover:text-[#bc9f70]">03</span>
+            </Link>
+            <Link
+              href="/#work"
+              onClick={closeMenu}
+              className="text-xl sm:text-2xl font-light text-[#f9f6f0] hover:text-[#bc9f70] transition-colors flex justify-between items-center py-2.5 border-b border-white/5 group"
+            >
+              <span className="group-hover:translate-x-1 transition-transform">Work</span>
+              <span className="text-xs font-mono text-[#bc9f70]/80 group-hover:text-[#bc9f70]">04</span>
+            </Link>
+            <Link
+              href="/#process"
+              onClick={closeMenu}
+              className="text-xl sm:text-2xl font-light text-[#f9f6f0] hover:text-[#bc9f70] transition-colors flex justify-between items-center py-2.5 border-b border-white/5 group"
+            >
+              <span className="group-hover:translate-x-1 transition-transform">Process</span>
+              <span className="text-xs font-mono text-[#bc9f70]/80 group-hover:text-[#bc9f70]">05</span>
+            </Link>
+            <Link
+              href="/about"
+              onClick={closeMenu}
+              className="text-xl sm:text-2xl font-light text-[#f9f6f0] hover:text-[#bc9f70] transition-colors flex justify-between items-center py-2.5 border-b border-white/5 group"
+            >
+              <span className="group-hover:translate-x-1 transition-transform">About</span>
+              <span className="text-xs font-mono text-[#bc9f70]/80 group-hover:text-[#bc9f70]">06</span>
+            </Link>
+            <Link
+              href="/#contact"
+              onClick={closeMenu}
+              className="text-xl sm:text-2xl font-light text-[#f9f6f0] hover:text-[#bc9f70] transition-colors flex justify-between items-center py-2.5 group"
+            >
+              <span className="group-hover:translate-x-1 transition-transform">Contact</span>
+              <span className="text-xs font-mono text-[#bc9f70]/80 group-hover:text-[#bc9f70]">07</span>
+            </Link>
+          </nav>
+        </div>
+
+        {/* Bottom Section: High-Contrast CTA Button & Studio Info */}
+        <div className="pt-5 border-t border-white/10 flex flex-col gap-3">
+          <Link
+            className="w-full py-3.5 sm:py-4 px-6 rounded-full bg-[#bc9f70] text-[#121417] hover:bg-[#cbb387] font-semibold text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(188,159,112,0.3)] transition-all duration-200 active:scale-[0.98]"
+            href="/start-project"
+            onClick={closeMenu}
+          >
+            <span>Start a project</span>
+            <FiArrowUpRight className="w-4 h-4 text-[#121417]" />
+          </Link>
+          <p className="text-[11px] font-mono text-white/40 tracking-wider uppercase text-center pt-1">
+            Technology · AI · Digital Products
+          </p>
+        </div>
+      </aside>
+    </>
   );
 }
 

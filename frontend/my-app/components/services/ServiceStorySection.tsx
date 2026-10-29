@@ -103,7 +103,7 @@ export function ServiceStorySection({ service, index, total }: ServiceStorySecti
       <div ref={containerRef} className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-center px-6 lg:px-16 pt-16">
         
         {/* The visual stage */}
-        <div ref={stageRef} className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start h-full max-h-[800px] py-12 lg:py-24">
+        <div ref={stageRef} className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start h-full max-h-[800px] py-8 lg:py-12">
           
           {/* Left / Number */}
           <div className="lg:col-span-2 hidden lg:flex items-start h-full">

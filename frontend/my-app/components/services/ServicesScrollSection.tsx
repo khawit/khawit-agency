@@ -131,7 +131,7 @@ export function ServicesScrollSection() {
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-[#f9f6f0] leading-tight">
                 Complex ideas.{" "}
-                <span className="font-cursive italic text-[#bc9f70] text-2xl sm:text-3xl lg:text-4xl font-normal drop-shadow-sm">
+                <span className="font-cursive italic text-[#bc9f70] text-2xl sm:text-3xl lg:text-4xl font-normal">
                   Clear outcomes.
                 </span>
               </h2>

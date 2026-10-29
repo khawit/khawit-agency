@@ -71,7 +71,7 @@ export function GlobeSection() {
         <span className="contact-index">KH / 2026</span>
       </div>
 
-      <div className="relative w-full max-w-7xl mx-auto py-12 md:py-16 flex flex-col items-center justify-center min-h-[520px] z-20">
+      <div className="relative w-full max-w-7xl mx-auto py-12 md:py-16 flex flex-col items-center justify-center min-h-[380px] lg:min-h-[520px] z-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +84,7 @@ export function GlobeSection() {
           </p>
           <h2 className="text-3xl md:text-5xl font-medium text-[#f9f6f0] tracking-tight leading-tight mb-4">
             Let us know where you are from <br />
-            <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm inline-block mt-1">
+            <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal inline-block mt-1">
               &amp; what&apos;s your idea.
             </span>
           </h2>
@@ -93,15 +93,15 @@ export function GlobeSection() {
           </p>
 
           <Link
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#33373d] hover:bg-[#bc9f70] text-white hover:text-[#1a1c20] text-sm font-semibold transition-all duration-300 shadow-md hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#33373d] hover:bg-[#bc9f70] text-white hover:text-[#1a1c20] text-sm font-semibold transition-all duration-300 shadow-md"
             href="/start-project"
           >
             Start a project <FiArrowUpRight aria-hidden="true" />
           </Link>
         </motion.div>
 
-        {/* Globe canvas */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center top-10 opacity-70">
+        {/* Globe canvas: visible on desktop (lg+), hidden on mobile and tablet */}
+        <div className="hidden lg:flex absolute inset-0 w-full h-full pointer-events-none items-center justify-center top-10 opacity-70">
           {showWorld && <World data={sampleArcs} globeConfig={globeConfig} />}
         </div>
       </div>

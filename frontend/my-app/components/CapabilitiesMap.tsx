@@ -43,7 +43,7 @@ const headingFold = {
 
 export function CapabilitiesMap() {
   return (
-    <section className="relative py-24 md:py-32 section-shell overflow-hidden" id="approach">
+    <section className="relative pt-12 md:pt-16 pb-6 md:pb-8 section-shell overflow-hidden" id="approach">
       {/* Subtle ambient lighting behind glass cards */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-[#bc9f70]/10 via-[#5f8580]/10 to-transparent blur-[120px] pointer-events-none -z-10" />
 

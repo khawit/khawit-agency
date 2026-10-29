@@ -57,7 +57,7 @@ export function FAQSection() {
   };
 
   return (
-    <section className="faq-section section-shell py-20 md:py-28" id="faq" aria-labelledby="faq-title">
+    <section className="faq-section section-shell py-12 md:py-16" id="faq" aria-labelledby="faq-title">
       <div className="max-w-7xl mx-auto w-full">
         <div className="section-heading reveal">
           <div>

@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { AgencyExperience } from "@/components/agency-experience";
 import { StartProjectForm } from "@/components/StartProjectForm";
 import { FiShield, FiClock } from "react-icons/fi";
 
@@ -36,9 +35,7 @@ export const metadata: Metadata = {
 
 export default function StartProjectPage() {
   return (
-    <>
-      <AgencyExperience />
-      <main className="min-h-screen bg-[#f9f6f0] text-[#33373d] pt-28 md:pt-36 pb-20 relative overflow-hidden">
+    <main className="min-h-screen bg-[#f9f6f0] text-[#33373d] pt-24 md:pt-32 pb-12 md:pb-16 relative overflow-hidden">
         {/* Subtle background ambient warmth */}
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-[#bc9f70]/8 via-[#f0ece3]/50 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
@@ -151,35 +148,5 @@ export default function StartProjectPage() {
           </div>
         </div>
       </main>
-
-      {/* FOOTER */}
-      <footer className="bg-[#1a1c1e] text-[#ece8df] py-14 section-shell border-t border-white/10">
-        <div className="max-w-[1500px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-[#ece8df]/70">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/khawit-logo-nbg.png"
-              alt="KHAWIT Solutions logo"
-              width={28}
-              height={28}
-              className="w-7 h-7 object-contain"
-              style={{ width: "auto", height: "auto" }}
-            />
-            <span className="font-semibold text-[#f9f6f0] tracking-widest">KHAWIT SOLUTIONS</span>
-          </div>
-          <p>© {new Date().getFullYear()} KHAWIT Solutions. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <Link href="/" className="hover:text-[#bc9f70] transition-colors">
-              Home
-            </Link>
-            <Link href="/about" className="hover:text-[#bc9f70] transition-colors">
-              About
-            </Link>
-            <Link href="/services" className="hover:text-[#bc9f70] transition-colors">
-              Services
-            </Link>
-          </div>
-        </div>
-      </footer>
-    </>
   );
 }

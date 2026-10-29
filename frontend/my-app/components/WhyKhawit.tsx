@@ -54,7 +54,7 @@ const differentiators = [
 
 export function WhyKhawit() {
   return (
-    <section className="why-section relative section-shell py-20 md:py-28 overflow-hidden" id="why-khawit" aria-labelledby="why-title">
+    <section className="why-section relative section-shell py-12 md:py-16 overflow-hidden" id="why-khawit" aria-labelledby="why-title">
       {/* Subtle darkened Mid-Century backdrop behind Why KHAWIT cards */}
       <div className="absolute inset-0 -z-10 opacity-35 pointer-events-none overflow-hidden" aria-hidden="true">
         <Image

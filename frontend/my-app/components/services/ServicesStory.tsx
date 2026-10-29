@@ -167,7 +167,7 @@ export function ServicesStory() {
             <span>Practice Areas</span>
           </div>
           <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium text-[#f9f6f0] tracking-tight leading-tight mb-4">
-            Explore our seven <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">core disciplines.</span>
+            Explore our seven <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">core disciplines.</span>
           </h3>
           <p className="text-sm md:text-base text-[#ece8df] leading-relaxed">
             Select any discipline below to view our complete catalogue of capabilities, commercial impact, and engineering architecture.

@@ -56,7 +56,7 @@ export function IndustriesSection({ variant = "dark" }: { variant?: "light" | "d
 
   return (
     <section
-      className={`py-20 md:py-28 section-shell ${
+      className={`py-12 md:py-16 section-shell ${
         isDark
           ? "bg-[#1e2125] text-white"
           : "bg-[#f0ece3] text-[#33373d]"

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { servicesData, getServiceBySlug } from "@/data/servicesData";
-import { AgencyExperience } from "@/components/agency-experience";
 import { FoldText } from "@/components/fold-text";
 import { IndustriesSection } from "@/components/IndustriesSection";
 import {
@@ -106,18 +105,16 @@ export default async function ServiceDetailPage({
   })();
 
   return (
-    <>
-      <AgencyExperience />
-      <main className="min-h-screen bg-[#f9f6f0] text-[#33373d]">
+    <main className="min-h-screen bg-[#f9f6f0] text-[#33373d]">
         {/* SECTION 1: SERVICE HERO */}
-        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 section-shell bg-[#33373d] text-[#f9f6f0] overflow-hidden">
+        <section className="relative pt-24 pb-12 md:pt-32 md:pb-16 section-shell bg-[#33373d] text-[#f9f6f0] overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-[#22252a] via-[#33373d] to-[#2c3036] opacity-90" />
           <div className="hero-grid opacity-10 absolute inset-0" aria-hidden="true" />
           
           <div className="relative z-10 max-w-6xl mx-auto">
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <Link
-                href="/#services"
+                href="/services"
                 className="text-xs font-mono uppercase tracking-widest text-[#bc9f70] hover:text-white transition-colors flex items-center gap-2"
               >
                 <span>Services</span>
@@ -138,7 +135,7 @@ export default async function ServiceDetailPage({
                 >
                   <span className="text-white block">
                     {titleParts.first ? `${titleParts.first} ` : ""}
-                    <span className="font-cursive italic text-[#bc9f70] font-normal tracking-normal text-5xl sm:text-7xl md:text-8xl inline-block drop-shadow-[0_2px_24px_rgba(188,159,112,0.45)]">
+                    <span className="font-cursive italic text-[#bc9f70] font-normal tracking-normal text-5xl sm:text-7xl md:text-8xl inline-block">
                       {titleParts.last}
                     </span>
                   </span>
@@ -190,7 +187,7 @@ export default async function ServiceDetailPage({
         </section>
 
         {/* SECTION 2: INTRODUCTION & TARGET AUDIENCE */}
-        <section className="py-20 md:py-28 section-shell border-b border-[#d9d5cc]/60">
+        <section className="py-12 md:py-16 section-shell border-b border-[#d9d5cc]/60">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               <div className="lg:col-span-5">
@@ -204,7 +201,7 @@ export default async function ServiceDetailPage({
                   text="Who this service helps & what it solves."
                 >
                   <span className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#33373d] leading-tight block mb-6">
-                    Who this service helps &amp; <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">what it solves.</span>
+                    Who this service helps &amp; <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">what it solves.</span>
                   </span>
                 </FoldText>
                 <p className="text-sm md:text-base text-[#565b61] leading-relaxed mb-6">
@@ -235,7 +232,7 @@ export default async function ServiceDetailPage({
         </section>
 
         {/* SECTION 3: OUR KEY OFFERINGS (ALL SUBSERVICES) */}
-        <section className="relative py-20 md:py-28 section-shell text-white overflow-hidden" id="key-offerings">
+        <section className="relative py-12 md:py-16 section-shell text-white overflow-hidden" id="key-offerings">
           {/* Deep atmospheric backdrop */}
           <div className="absolute inset-0 z-0 pointer-events-none bg-[#1e2227]">
             <div className="absolute inset-0 bg-gradient-to-b from-[#181a20]/95 via-[#1b1e25]/90 to-[#14161b]/98" />
@@ -255,7 +252,7 @@ export default async function ServiceDetailPage({
                   text={`Our ${service.title} Key Offerings.`}
                 >
                   <span className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#f9f6f0] leading-tight block">
-                    Our {service.title} <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">Key Offerings.</span>
+                    Our {service.title} <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">Key Offerings.</span>
                   </span>
                 </FoldText>
               </div>
@@ -310,7 +307,7 @@ export default async function ServiceDetailPage({
         </section>
 
         {/* SECTION 4: WHY IT MATTERS */}
-        <section className="relative py-20 md:py-28 section-shell bg-[#14171d] text-white overflow-hidden border-b border-white/10">
+        <section className="relative py-12 md:py-16 section-shell bg-[#14171d] text-white overflow-hidden border-b border-white/10">
           <div className="max-w-6xl mx-auto">
             <div className="max-w-2xl mb-12">
               <p className="eyebrow mb-3 text-[#bc9f70]">
@@ -323,7 +320,7 @@ export default async function ServiceDetailPage({
                 text="Why this investment matters to your bottom line."
               >
                 <span className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#f9f6f0] leading-tight block mb-4">
-                  Why this investment matters to your <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">bottom line.</span>
+                  Why this investment matters to your <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">bottom line.</span>
                 </span>
               </FoldText>
               <p className="text-[#a8aeb5] text-base leading-relaxed">
@@ -369,7 +366,7 @@ export default async function ServiceDetailPage({
         </section>
 
         {/* SECTION 5: REALISTIC USE CASES */}
-        <section className="py-20 md:py-28 section-shell bg-[#f0ece3]">
+        <section className="py-12 md:py-16 section-shell bg-[#f0ece3]">
           <div className="max-w-6xl mx-auto">
             <div className="section-heading reveal">
               <div>
@@ -383,7 +380,7 @@ export default async function ServiceDetailPage({
                   text="Realistic Implementation Scenarios."
                 >
                   <span className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#33373d] leading-tight block">
-                    Realistic Implementation <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">Scenarios.</span>
+                    Realistic Implementation <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">Scenarios.</span>
                   </span>
                 </FoldText>
               </div>
@@ -420,7 +417,7 @@ export default async function ServiceDetailPage({
         </section>
 
         {/* SECTION 6: HOW WE APPROACH IT */}
-        <section className="py-20 md:py-28 section-shell bg-[#33373d] text-white" id="approach">
+        <section className="py-12 md:py-16 section-shell bg-[#33373d] text-white" id="approach">
           <div className="max-w-6xl mx-auto">
             <div className="section-heading reveal">
               <div>
@@ -434,7 +431,7 @@ export default async function ServiceDetailPage({
                   text="How We Approach Implementation."
                 >
                   <span className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#f9f6f0] leading-tight block">
-                    How We Approach <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">Implementation.</span>
+                    How We Approach <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">Implementation.</span>
                   </span>
                 </FoldText>
               </div>
@@ -467,7 +464,7 @@ export default async function ServiceDetailPage({
         </section>
 
         {/* SECTION 7: WHY KHAWIT */}
-        <section className="py-20 md:py-28 section-shell border-b border-[#d9d5cc]/60">
+        <section className="py-12 md:py-16 section-shell border-b border-[#d9d5cc]/60">
           <div className="max-w-6xl mx-auto">
             <div className="section-heading reveal">
               <div>
@@ -481,7 +478,7 @@ export default async function ServiceDetailPage({
                   text={`Why Partner with KHAWIT for ${service.title}?`}
                 >
                   <span className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#33373d] leading-tight block">
-                    Why Partner with KHAWIT for <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">{service.title}?</span>
+                    Why Partner with KHAWIT for <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">{service.title}?</span>
                   </span>
                 </FoldText>
               </div>
@@ -515,7 +512,7 @@ export default async function ServiceDetailPage({
         <IndustriesSection variant="dark" />
 
         {/* SECTION 8: RELATED SERVICES */}
-        <section className="py-20 md:py-24 section-shell bg-[#f0ece3]">
+        <section className="py-12 md:py-16 section-shell bg-[#f0ece3]">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
               <div>
@@ -529,12 +526,12 @@ export default async function ServiceDetailPage({
                   text="Related KHAWIT Services."
                 >
                   <span className="text-3xl sm:text-4xl font-medium tracking-tight text-[#33373d] leading-tight block">
-                    Related KHAWIT <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl font-normal drop-shadow-sm">Services.</span>
+                    Related KHAWIT <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl font-normal">Services.</span>
                   </span>
                 </FoldText>
               </div>
               <Link
-                href="/#services"
+                href="/services"
                 className="text-xs font-semibold uppercase tracking-wider text-[#937a4e] hover:text-[#33373d] transition-colors mt-4 sm:mt-0 inline-flex items-center gap-1"
               >
                 View All Seven Disciplines <FiArrowRight />
@@ -562,7 +559,7 @@ export default async function ServiceDetailPage({
         </section>
 
         {/* SECTION 9: SERVICE SPECIFIC FAQS */}
-        <section className="py-20 md:py-28 section-shell bg-[#1e2125] text-white">
+        <section className="py-12 md:py-16 section-shell bg-[#1e2125] text-white">
           <div className="max-w-5xl mx-auto">
             <div className="section-heading reveal">
               <div>
@@ -576,7 +573,7 @@ export default async function ServiceDetailPage({
                   text={`Common questions about ${service.title}.`}
                 >
                   <span className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#f9f6f0] leading-tight block">
-                    Common questions about <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">{service.title}.</span>
+                    Common questions about <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">{service.title}.</span>
                   </span>
                 </FoldText>
               </div>
@@ -608,7 +605,7 @@ export default async function ServiceDetailPage({
         </section>
 
         {/* SECTION 10: FINAL SERVICE CTA */}
-        <section className="py-24 section-shell bg-[#33373d] text-white text-center relative overflow-hidden">
+        <section className="py-12 md:py-16 section-shell bg-[#33373d] text-white text-center relative overflow-hidden">
           <div className="hero-grid opacity-10 absolute inset-0" aria-hidden="true" />
           <div className="relative z-10 max-w-3xl mx-auto">
             <span className="text-xs font-mono tracking-widest text-[#bc9f70] uppercase bg-[#bc9f70]/10 px-3 py-1 rounded-full border border-[#bc9f70]/20 inline-block mb-4">
@@ -620,7 +617,7 @@ export default async function ServiceDetailPage({
               text={`Ready to build your ${service.title.toLowerCase()} solution?`}
             >
               <span className="text-3xl sm:text-5xl font-medium tracking-tight text-[#f9f6f0] leading-tight block mb-6">
-                Ready to build your <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-6xl font-normal drop-shadow-sm">{service.title.toLowerCase()}</span> solution?
+                Ready to build your <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-6xl font-normal">{service.title.toLowerCase()}</span> solution?
               </span>
             </FoldText>
             <p className="text-sm md:text-base text-[#a8aeb5] mb-8 leading-relaxed max-w-xl mx-auto">
@@ -643,137 +640,5 @@ export default async function ServiceDetailPage({
           </div>
         </section>
       </main>
-
-      {/* FOOTER */}
-      <footer className="bg-[#1a1c1e] text-[#ece8df] py-16 md:py-24 section-shell">
-        <div className="max-w-[1500px] mx-auto flex flex-col gap-16">
-          <div className="flex flex-col md:flex-row justify-between gap-12 md:gap-8">
-            <div className="w-full md:w-1/3 flex flex-col gap-6">
-              <Link href="/" className="flex items-center gap-4 inline-block">
-                <Image
-                  src="/khawit-logo-nbg.png"
-                  alt="KHAWIT Solutions logo"
-                  width={48}
-                  height={48}
-                  className="w-auto h-auto object-contain"
-                  style={{ width: "auto", height: "auto" }}
-                />
-                <span className="flex flex-col font-bold tracking-widest text-sm text-white">
-                  KHAWIT
-                  <small className="text-[#9ca3af] font-medium tracking-[0.18em] text-[10px] mt-1">
-                    SOLUTIONS
-                  </small>
-                </span>
-              </Link>
-              <p className="text-[#9ca3af] text-sm leading-relaxed max-w-sm mt-2">
-                Digital products, intelligent systems, and AI-powered experiences built for what&apos;s next.
-              </p>
-            </div>
-            <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-8">
-              <div className="flex flex-col gap-3">
-                <h2 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">
-                  Our Seven Services
-                </h2>
-                {servicesData.map((s) => (
-                  <Link
-                    key={s.id}
-                    href={`/services/${s.id}`}
-                    className={`text-sm transition-colors ${
-                      s.id === service.id
-                        ? "text-[#bc9f70] font-medium"
-                        : "text-[#9ca3af] hover:text-[#bc9f70]"
-                    }`}
-                  >
-                    {s.number}. {s.title}
-                  </Link>
-                ))}
-              </div>
-              <div className="flex flex-col gap-3">
-                <h2 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">
-                  Company
-                </h2>
-                <Link href="/" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">
-                  Home
-                </Link>
-                <Link href="/#why-khawit" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">
-                  Why KHAWIT
-                </Link>
-                <Link href="/#services" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">
-                  Services Overview
-                </Link>
-                <Link href="/#work" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">
-                  Work &amp; Systems
-                </Link>
-                <Link href="/about" className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors">
-                  About Us
-                </Link>
-              </div>
-              <div className="flex flex-col gap-3">
-                <h2 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">
-                  Connect
-                </h2>
-                <a
-                  href="https://www.linkedin.com/company/khawit-solutions-pvt-ltd/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"
-                >
-                  <FaLinkedinIn /> LinkedIn
-                </a>
-                <a
-                  href="https://www.instagram.com/khawit_solutions/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"
-                >
-                  <FaInstagram /> Instagram
-                </a>
-                <a
-                  href="https://www.threads.com/@khawit_solutions"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"
-                >
-                  <FaThreads /> Threads
-                </a>
-                <a
-                  href="mailto:khawitsocialmedia@gmail.com"
-                  className="text-sm text-[#9ca3af] hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"
-                >
-                  <FiMail /> khawitsocialmedia@gmail.com
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between border-t border-[#33373d] pt-12 mt-4 gap-6">
-            <p className="text-2xl md:text-3xl font-medium text-white">
-              Ready to build something meaningful? <br className="md:hidden" />
-              <Link
-                href={`/start-project?service=${encodeURIComponent(service.title)}`}
-                className="text-[#bc9f70] hover:text-white transition-colors inline-flex items-center mt-2 md:mt-0 gap-2"
-              >
-                Let&apos;s build it. <FiArrowUpRight className="w-6 h-6" />
-              </Link>
-            </p>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#9ca3af] pt-8 border-t border-[#33373d]/50">
-            <span>© {new Date().getFullYear()} KHAWIT Solutions. All rights reserved.</span>
-            <div className="flex gap-6">
-              <Link href={`/start-project?service=${encodeURIComponent(service.title)}`} className="hover:text-[#bc9f70] transition-colors">
-                Start a Project
-              </Link>
-              <a href="#privacy" className="hover:text-[#bc9f70] transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#terms" className="hover:text-[#bc9f70] transition-colors">
-                Terms of Service
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </>
   );
 }

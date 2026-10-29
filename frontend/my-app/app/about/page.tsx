@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { AgencyExperience } from "@/components/agency-experience";
 import { FoldText } from "@/components/fold-text";
 import { IndustriesSection } from "@/components/IndustriesSection";
 import {
@@ -110,15 +109,13 @@ const principles = [
 
 export default function AboutPage() {
   return (
-    <>
-      <AgencyExperience />
-      <main className="min-h-screen bg-[#f9f6f0] text-[#33373d]">
+    <main className="min-h-screen bg-[#f9f6f0] text-[#33373d]">
         {/* A. ABOUT HERO */}
-        <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 section-shell bg-[#33373d] text-white overflow-hidden">
+        <section className="relative pt-24 pb-12 md:pt-32 md:pb-16 section-shell bg-[#33373d] text-white overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-[#22252a] via-[#33373d] to-[#2c3036] opacity-95" />
           <div className="hero-grid opacity-10 absolute inset-0" aria-hidden="true" />
 
-          <div className="relative z-10 max-w-5xl mx-auto">
+          <div className="relative z-10 max-w-7xl mx-auto w-full">
             <p className="eyebrow text-[#bc9f70] mb-4">
               <span className="status-dot" />
               Independent Technology Studio
@@ -130,7 +127,7 @@ export default function AboutPage() {
               text="Engineered for clarity, purpose, and lasting impact."
             >
               <span className="text-4xl sm:text-6xl md:text-7xl font-medium tracking-tight text-white mb-8 leading-[1.08] block">
-                Engineered for clarity, purpose, and <span className="font-cursive italic text-[#bc9f70] font-normal tracking-normal text-5xl sm:text-7xl md:text-8xl inline-block drop-shadow-[0_2px_24px_rgba(188,159,112,0.45)]">lasting impact.</span>
+                Engineered for clarity, purpose, and <span className="font-cursive italic text-[#bc9f70] font-normal tracking-normal text-5xl sm:text-7xl md:text-8xl inline-block">lasting impact.</span>
               </span>
             </FoldText>
 
@@ -143,7 +140,7 @@ export default function AboutPage() {
               <div className="md:col-span-4 flex flex-wrap gap-4 md:justify-end">
                 <Link
                   href="/start-project"
-                  className="button button-dark rounded-full text-xs font-semibold px-8 py-3.5 bg-[#33373d] text-white hover:bg-[#bc9f70] hover:text-[#1a1c20] transition-all transform hover:-translate-y-0.5 inline-flex items-center gap-2 shadow-md"
+                  className="button button-dark rounded-full text-xs font-semibold px-8 py-3.5 bg-[#bc9f70] text-[#1a1c20] hover:bg-white transition-all transform hover:-translate-y-0.5 inline-flex items-center gap-2 shadow-md"
                 >
                   Start a Project <FiArrowUpRight className="w-4 h-4" />
                 </Link>
@@ -153,8 +150,8 @@ export default function AboutPage() {
         </section>
 
         {/* B. OUR STORY */}
-        <section className="py-20 md:py-28 section-shell border-b border-[#d9d5cc]/60">
-          <div className="max-w-5xl mx-auto">
+        <section className="py-12 md:py-16 section-shell border-b border-[#d9d5cc]/60">
+          <div className="max-w-7xl mx-auto w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               <div className="lg:col-span-5">
                 <p className="eyebrow mb-3">
@@ -167,7 +164,7 @@ export default function AboutPage() {
                   text="Why KHAWIT was founded."
                 >
                   <span className="text-3xl md:text-5xl font-medium tracking-tight mb-6 block text-[#33373d]">
-                    Why KHAWIT was <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">founded.</span>
+                    Why KHAWIT was <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">founded.</span>
                   </span>
                 </FoldText>
                 <div className="p-6 rounded-2xl bg-[#f0ece3] border border-[#d9d5cc]">
@@ -196,22 +193,27 @@ export default function AboutPage() {
         </section>
 
         {/* C, D, E. PURPOSE, MISSION & VISION */}
-        <section className="py-20 md:py-28 section-shell bg-[#f0ece3]">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <p className="eyebrow justify-center mb-3">
-                <span className="status-dot" />
-                Foundational Direction
+        <section className="py-12 md:py-16 section-shell bg-[#f0ece3]">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="section-heading reveal mb-14">
+              <div>
+                <p className="eyebrow mb-3">
+                  <span className="status-dot" />
+                  Foundational Direction
+                </p>
+                <FoldText
+                  as="h2"
+                  {...headingFold}
+                  text="Purpose, Mission, and Vision."
+                >
+                  <span className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight block text-[#33373d] leading-tight">
+                    Purpose, Mission, and <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">Vision.</span>
+                  </span>
+                </FoldText>
+              </div>
+              <p className="section-aside text-[#565b61]">
+                The operational purpose, active commitment, and long-term vision that guide every product, AI model, and partnership we build.
               </p>
-              <FoldText
-                as="h2"
-                {...headingFold}
-                text="Purpose, Mission, and Vision."
-              >
-                <span className="text-3xl md:text-5xl font-medium tracking-tight block text-[#33373d]">
-                  Purpose, Mission, and <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">Vision.</span>
-                </span>
-              </FoldText>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -273,8 +275,8 @@ export default function AboutPage() {
         </section>
 
         {/* F. OUR PRINCIPLES */}
-        <section className="py-20 md:py-28 section-shell bg-[#33373d] text-white">
-          <div className="max-w-5xl mx-auto">
+        <section className="py-12 md:py-16 section-shell bg-[#33373d] text-white">
+          <div className="max-w-7xl mx-auto w-full">
             <div className="section-heading reveal">
               <div>
                 <p className="eyebrow text-[#bc9f70]">
@@ -286,8 +288,8 @@ export default function AboutPage() {
                   {...headingFold}
                   text="Our Six Core Principles."
                 >
-                  <span className="text-3xl md:text-5xl font-medium tracking-tight block text-white">
-                    Our Six Core <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">Principles.</span>
+                  <span className="text-3xl md:text-5xl font-medium tracking-tight block text-white leading-tight">
+                    Our Six Core <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">Principles.</span>
                   </span>
                 </FoldText>
               </div>
@@ -324,24 +326,29 @@ export default function AboutPage() {
         </section>
 
         {/* G. EXISTING CLIENTS & PARTNERSHIPS */}
-        <section className="py-20 md:py-28 section-shell border-b border-[#d9d5cc]/60">
-          <div className="max-w-5xl mx-auto text-center">
-            <p className="eyebrow justify-center mb-3">
-              <span className="status-dot" />
-              Trusted Partnerships
-            </p>
-            <FoldText
-              as="h2"
-              {...headingFold}
-              text="Teams We Have Worked With."
-            >
-              <span className="text-3xl md:text-5xl font-medium tracking-tight mb-4 block text-[#33373d]">
-                Teams We Have <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal drop-shadow-sm">Worked With.</span>
-              </span>
-            </FoldText>
-            <p className="text-sm md:text-base text-[#565b61] max-w-xl mx-auto mb-12">
-              We build enduring relationships based on technical reliability, transparent delivery, and measurable commercial value.
-            </p>
+        <section className="clients-section section-shell py-12 md:py-16 border-b border-[#d9d5cc]/60 reveal" aria-labelledby="clients-title">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="section-heading mb-12">
+              <div>
+                <p className="eyebrow mb-3">
+                  <span className="status-dot" />
+                  Trusted Partnerships
+                </p>
+                <FoldText
+                  as="h2"
+                  {...headingFold}
+                  id="clients-title"
+                  text="Teams We Have Worked With."
+                >
+                  <span className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight block text-[#33373d] leading-tight">
+                    Teams We Have <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">Worked With.</span>
+                  </span>
+                </FoldText>
+              </div>
+              <p className="section-aside text-[#565b61]">
+                We build enduring relationships based on technical reliability, transparent delivery, and measurable commercial value.
+              </p>
+            </div>
 
             <div className="client-marquee" role="region" aria-label="Companies KHAWIT has worked with">
               <div className="client-track">
@@ -372,171 +379,44 @@ export default function AboutPage() {
         <IndustriesSection variant="light" />
 
         {/* H. FINAL ABOUT CTA */}
-        <section className="py-24 section-shell bg-[#1a1c1e] text-white text-center relative overflow-hidden">
+        <section className="py-12 md:py-16 section-shell bg-[#1a1c1e] text-white relative overflow-hidden">
           <div className="hero-grid opacity-10 absolute inset-0" aria-hidden="true" />
-          <div className="relative z-10 max-w-3xl mx-auto">
-            <span className="text-xs font-mono tracking-widest text-[#bc9f70] uppercase bg-[#bc9f70]/10 px-3 py-1 rounded-full border border-[#bc9f70]/20 inline-block mb-4">
-              COLLABORATION
-            </span>
-            <FoldText
-              as="h2"
-              {...headingFold}
-              text="Let's build what comes next together."
-            >
-              <span className="text-3xl sm:text-5xl font-medium text-white mb-6 block">
-                Let&apos;s build <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-6xl font-normal drop-shadow-sm">what comes next</span> together.
-              </span>
-            </FoldText>
-            <p className="text-sm md:text-base text-[#a8aeb5] mb-8 leading-relaxed max-w-xl mx-auto">
-              Whether you are exploring a new digital product, integrating applied AI, or modernizing your web presence, we are ready to discuss your goals.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href="/start-project"
-                className="button button-dark rounded-full text-xs font-semibold px-8 py-4 bg-[#33373d] text-white hover:bg-[#bc9f70] hover:text-[#1a1c20] transition-all transform hover:-translate-y-1 inline-flex items-center gap-2 shadow-md"
-              >
-                Start a Project <FiArrowUpRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/#services"
-                className="text-xs font-semibold text-white hover:text-[#bc9f70] transition-colors uppercase tracking-wider px-6 py-4 inline-flex items-center gap-2"
-              >
-                Explore All Seven Services <FiArrowRight className="w-4 h-4" />
-              </Link>
+          <div className="relative z-10 max-w-7xl mx-auto w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <div className="lg:col-span-8 flex flex-col items-start text-left">
+                <span className="text-xs font-mono tracking-widest text-[#bc9f70] uppercase bg-[#bc9f70]/10 px-3 py-1 rounded-full border border-[#bc9f70]/20 inline-block mb-4">
+                  COLLABORATION
+                </span>
+                <FoldText
+                  as="h2"
+                  {...headingFold}
+                  text="Let's build what comes next together."
+                >
+                  <span className="text-3xl sm:text-4xl md:text-5xl font-medium text-white mb-4 block leading-tight">
+                    Let&apos;s build <span className="font-cursive italic text-[#bc9f70] text-4xl sm:text-5xl md:text-6xl font-normal">what comes next</span> together.
+                  </span>
+                </FoldText>
+                <p className="text-sm md:text-base text-[#a8aeb5] leading-relaxed max-w-2xl">
+                  Whether you are exploring a new digital product, integrating applied AI, or modernizing your web presence, we are ready to discuss your goals.
+                </p>
+              </div>
+              <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-4 lg:items-end justify-start">
+                <Link
+                  href="/start-project"
+                  className="button button-dark rounded-full text-xs font-semibold px-8 py-4 bg-[#bc9f70] text-[#1a1c20] hover:bg-white transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto"
+                >
+                  Start a Project <FiArrowUpRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/services"
+                  className="text-xs font-semibold text-white hover:text-[#bc9f70] transition-colors uppercase tracking-wider px-4 py-2 inline-flex items-center justify-center gap-2"
+                >
+                  Explore All Seven Services <FiArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
       </main>
-
-      {/* FOOTER */}
-      <footer className="bg-[#1a1c1e] text-[#ece8df] py-16 md:py-24 section-shell">
-        <div className="max-w-[1500px] mx-auto flex flex-col gap-16">
-          <div className="flex flex-col md:flex-row justify-between gap-12 md:gap-8">
-            <div className="w-full md:w-1/3 flex flex-col gap-6">
-              <Link href="/" className="flex items-center gap-4 inline-block">
-                <Image
-                  src="/khawit-logo-nbg.png"
-                  alt="KHAWIT Solutions logo"
-                  width={48}
-                  height={48}
-                  className="w-auto h-auto object-contain"
-                  style={{ width: "auto", height: "auto" }}
-                />
-                <span className="flex flex-col font-bold tracking-widest text-sm text-[#f9f6f0]">
-                  KHAWIT
-                  <small className="text-[#ece8df]/60 font-medium tracking-[0.18em] text-[10px] mt-1">
-                    SOLUTIONS
-                  </small>
-                </span>
-              </Link>
-              <p className="text-[#ece8df]/75 text-sm leading-relaxed max-w-sm mt-2">
-                Digital products, intelligent systems, and AI-powered experiences built for what&apos;s next.
-              </p>
-            </div>
-            <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-8">
-              <div className="flex flex-col gap-3">
-                <h3 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">
-                  Our Seven Services
-                </h3>
-                {servicesData.map((s) => (
-                  <Link
-                    key={s.id}
-                    href={`/services/${s.id}`}
-                    className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors"
-                  >
-                    {s.number}. {s.title}
-                  </Link>
-                ))}
-              </div>
-              <div className="flex flex-col gap-3">
-                <h3 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">
-                  Company
-                </h3>
-                <Link href="/" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  Home
-                </Link>
-                <Link href="/#why-khawit" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  Why KHAWIT
-                </Link>
-                <Link href="/#services" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  Services
-                </Link>
-                <Link href="/#work" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  Work &amp; Systems
-                </Link>
-                <Link href="/#process" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  Process
-                </Link>
-                <Link href="/about" className="text-sm text-[#bc9f70] font-medium transition-colors">
-                  About Us
-                </Link>
-              </div>
-              <div className="flex flex-col gap-3">
-                <h3 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">
-                  Connect
-                </h3>
-                <a
-                  href="https://www.linkedin.com/company/khawit-solutions-pvt-ltd/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"
-                >
-                  <FaLinkedinIn /> LinkedIn
-                </a>
-                <a
-                  href="https://www.instagram.com/khawit_solutions/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"
-                >
-                  <FaInstagram /> Instagram
-                </a>
-                <a
-                  href="https://www.threads.com/@khawit_solutions"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"
-                >
-                  <FaThreads /> Threads
-                </a>
-                <a
-                  href="mailto:khawitsocialmedia@gmail.com"
-                  className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"
-                >
-                  <FiMail /> khawitsocialmedia@gmail.com
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between border-t border-[#33373d] pt-12 mt-4 gap-6">
-            <p className="text-2xl md:text-3xl font-medium text-[#f9f6f0]">
-              Ready to build something meaningful? <br className="md:hidden" />
-              <Link
-                href="/start-project"
-                className="text-[#bc9f70] hover:text-white transition-colors inline-flex items-center mt-2 md:mt-0 gap-2"
-              >
-                Let&apos;s build it. <FiArrowUpRight className="w-6 h-6" />
-              </Link>
-            </p>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#ece8df]/65 pt-8 border-t border-[#33373d]/50">
-            <span>© {new Date().getFullYear()} KHAWIT Solutions. All rights reserved.</span>
-            <div className="flex gap-6">
-              <Link href="/start-project" className="hover:text-[#bc9f70] transition-colors">
-                Start a Project
-              </Link>
-              <a href="#privacy" className="hover:text-[#bc9f70] transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#terms" className="hover:text-[#bc9f70] transition-colors">
-                Terms of Service
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </>
   );
 }

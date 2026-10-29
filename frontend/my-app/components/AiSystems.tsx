@@ -18,7 +18,7 @@ const headingFold = {
 
 export function AiSystems() {
   return (
-    <section className="relative py-24 md:py-32 section-shell overflow-hidden" id="ai-systems">
+    <section className="relative py-12 md:py-16 section-shell overflow-hidden" id="ai-systems">
       {/* Subtle ambient lighting behind glass cards */}
       <div className="absolute top-1/2 right-1/4 w-[600px] h-[500px] bg-gradient-to-bl from-[#5f8580]/15 via-[#bc9f70]/10 to-transparent blur-[130px] pointer-events-none -z-10" />
 

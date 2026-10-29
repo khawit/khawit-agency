@@ -49,7 +49,7 @@ const headingFold = {
 
 export function HowWeWork() {
   return (
-    <section className="relative py-24 md:py-32 section-shell overflow-hidden" id="process">
+    <section className="relative pt-6 md:pt-8 pb-12 md:pb-16 section-shell overflow-hidden" id="process">
       {/* Subtle ambient lighting behind glass cards */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-[#bc9f70]/10 via-[#5f8580]/10 to-transparent blur-[130px] pointer-events-none -z-10" />
 

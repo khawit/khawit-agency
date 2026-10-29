@@ -1,15 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AgencyExperience } from "@/components/agency-experience";
-import { ServicesScrollSection } from "@/components/services/ServicesScrollSection";
 import { WhyKhawit } from "@/components/WhyKhawit";
 import { FAQSection } from "@/components/FAQSection";
 import { FoldText } from "@/components/fold-text";
-import TextLoop from "@/components/text-loop";
 import { GlobeSection } from "@/components/GlobeSection";
 import { CapabilitiesMap } from "@/components/CapabilitiesMap";
 import { ProductShowcase } from "@/components/ProductShowcase";
-import { AiSystems } from "@/components/AiSystems";
 import { TeamCollaboration } from "@/components/TeamCollaboration";
 import { HowWeWork } from "@/components/HowWeWork";
 import {
@@ -65,12 +61,10 @@ const headingFold = {
 
 export default function Home() {
   return (
-    <>
-      <AgencyExperience />
-      <main>
+    <main>
         {/* SECTION A — HERO */}
         <section
-          className="relative min-h-[100svh] flex items-center overflow-hidden px-4 sm:px-6 lg:px-12 pt-28 pb-16 md:pt-32 md:pb-20 bg-[#f9f6f0]"
+          className="relative min-h-[100svh] flex items-center overflow-hidden px-4 sm:px-6 lg:px-12 pt-24 pb-8 md:pt-28 md:pb-10 bg-[#f9f6f0]"
           id="home"
           aria-labelledby="hero-title"
         >
@@ -82,22 +76,8 @@ export default function Home() {
           <div className="relative z-10 w-full max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center">
               
-              {/* Left Column: Friendly AI Assistant Service Hub Image */}
-              <div className="lg:col-span-6 flex items-center justify-center order-2 lg:order-1">
-                <div className="relative w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[520px] aspect-[2/3] flex items-center justify-center">
-                  <Image
-                    src="/friendly-ai-assistant.png"
-                    alt="3D AI assistant robot in KHAWIT's charcoal and bronze brand colors representing intelligent systems"
-                    fill
-                    priority
-                    className="object-contain object-center drop-shadow-[0_24px_48px_rgba(51,55,61,0.16)] transition-transform duration-700 hover:scale-[1.02]"
-                    sizes="(max-width: 1024px) 100vw, 520px"
-                  />
-                </div>
-              </div>
-
-              {/* Right Column: Text & Buttons */}
-              <div className="lg:col-span-6 flex flex-col items-start text-left order-1 lg:order-2">
+              {/* Left Column: Text & Buttons */}
+              <div className="lg:col-span-7 xl:col-span-6 flex flex-col items-start text-left">
                 {/* Eyebrow badge */}
                 <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#f0ece3] border border-[#e5dfd4] text-[#33373d] text-xs font-mono tracking-widest uppercase mb-6 shadow-sm">
                   <span className="w-2 h-2 rounded-full bg-[#5f8580] animate-pulse" />
@@ -126,13 +106,27 @@ export default function Home() {
                     <span className="text-white group-hover:text-[#1a1c20] transition-colors">Start a project</span>
                     <FiArrowUpRight className="w-4 h-4 text-white group-hover:text-[#1a1c20] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Link>
-                  <a
-                    href="#services"
+                  <Link
+                    href="/services"
                     className="px-8 py-4 rounded-full bg-white hover:bg-[#f0ece3] text-[#33373d] hover:text-[#1a1c20] border border-[#d9d5cc] hover:border-[#bc9f70] font-medium text-sm transition-all duration-300 shadow-sm flex items-center justify-center gap-2 hover:-translate-y-0.5"
                   >
                     <span>Explore our services</span>
                     <FiArrowRight className="w-4 h-4 text-[#937a4e]" />
-                  </a>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right Column: Friendly AI Assistant Robot (Visible on desktop, hidden on mobile/stacked view) */}
+              <div className="hidden lg:flex lg:col-span-5 xl:col-span-6 items-center justify-center">
+                <div className="relative w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[520px] aspect-[2/3] flex items-center justify-center">
+                  <Image
+                    src="/friendly-ai-assistant.png"
+                    alt="3D AI assistant robot in KHAWIT's charcoal and bronze brand colors representing intelligent systems"
+                    fill
+                    priority
+                    className="object-contain object-center drop-shadow-[0_24px_48px_rgba(51,55,61,0.16)] transition-transform duration-700 hover:scale-[1.02]"
+                    sizes="(max-width: 1024px) 100vw, 520px"
+                  />
                 </div>
               </div>
 
@@ -140,31 +134,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* TextLoop Brand Ribbon */}
-        <TextLoop
-          text="KHAWIT Solutions "
-          shape="wave"
-          speed={120}
-          direction="forward"
-          separator="✦"
-          curviness={58}
-          fontSize={56}
-          fontWeight={700}
-          letterSpacing={6}
-          uppercase
-          color="#bc9f70"
-          ribbon
-          ribbonColor="#33373d"
-          ribbonWidth={88}
-          pauseOnHover={false}
-        />
-
         {/* SECTION B — WHY KHAWIT? */}
         <WhyKhawit />
-
-
-        {/* SECTION C — OUR SEVEN SERVICES (VERTICAL-TO-HORIZONTAL SCROLL) */}
-        <ServicesScrollSection />
 
         {/* SHOWCASE ZONE: CAPABILITIES, WORK, AI, TEAM, PROCESS */}
         <div className="relative bg-[#565B61] overflow-hidden">
@@ -178,9 +149,6 @@ export default function Home() {
 
             {/* PRODUCT SHOWCASE — WHAT WE BUILD & AUTOMATE */}
             <ProductShowcase />
-
-            {/* AI SYSTEMS — MORE THAN A CONVERSATION */}
-            <AiSystems />
 
             {/* TEAM COLLABORATION — A TEAM THAT BUILDS WITH YOU */}
             <TeamCollaboration />
@@ -272,151 +240,5 @@ export default function Home() {
         {/* GLOBAL REACH */}
         <GlobeSection />
       </main>
-
-      {/* FOOTER */}
-      <footer className="bg-[#1a1c1e] text-[#ece8df] py-16 md:py-24 section-shell">
-        <div className="max-w-[1500px] mx-auto flex flex-col gap-16">
-          <div className="flex flex-col md:flex-row justify-between gap-12 md:gap-8">
-            <div className="w-full md:w-1/3 flex flex-col gap-6">
-              <a href="#home" className="flex items-center gap-4 inline-block">
-                <Image
-                  src="/khawit-logo-nbg.png"
-                  alt="KHAWIT Solutions logo"
-                  width={48}
-                  height={48}
-                  className="w-auto h-auto object-contain"
-                  style={{ width: "auto", height: "auto" }}
-                />
-                <span className="flex flex-col font-bold tracking-widest text-sm text-[#f9f6f0]">
-                  KHAWIT
-                  <small className="text-[#ece8df]/60 font-medium tracking-[0.18em] text-[10px] mt-1">
-                    SOLUTIONS
-                  </small>
-                </span>
-              </a>
-              <p className="text-[#ece8df]/75 text-sm leading-relaxed max-w-sm mt-2">
-                Digital products, intelligent systems, and AI-powered experiences built for what&apos;s next.
-              </p>
-            </div>
-            <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-8">
-              <div className="flex flex-col gap-3">
-                <h3 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">
-                  Our Seven Services
-                </h3>
-                <Link href="/services/web-development" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  01. Web Development
-                </Link>
-                <Link href="/services/ai-solutions" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  02. Conversational AI &amp; Knowledge Systems (RAG)
-                </Link>
-                <Link href="/services/ai-agents-automation" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  03. Autonomous AI Agents &amp; Automation
-                </Link>
-                <Link href="/services/saas-product" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  04. SaaS &amp; Product
-                </Link>
-                <Link href="/services/ai-powered-systems" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  05. Enterprise AI &amp; Business Operations
-                </Link>
-                <Link href="/services/deployment" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  06. Deployment
-                </Link>
-                <Link href="/services/digital-marketing" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  07. Digital Marketing
-                </Link>
-              </div>
-              <div className="flex flex-col gap-3">
-                <h3 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">
-                  Company
-                </h3>
-                <Link href="/" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  Home
-                </Link>
-                <Link href="/#why-khawit" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  Why KHAWIT
-                </Link>
-                <Link href="/#services" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  Services Overview
-                </Link>
-                <Link href="/#work" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  Work &amp; Systems
-                </Link>
-                <Link href="/#process" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  Process
-                </Link>
-                <Link href="/#faq" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  FAQ
-                </Link>
-                <Link href="/about" className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors">
-                  About Us
-                </Link>
-              </div>
-              <div className="flex flex-col gap-3">
-                <h3 className="text-[#bc9f70] font-semibold text-xs tracking-widest uppercase mb-2">
-                  Connect
-                </h3>
-                <a
-                  href="https://www.linkedin.com/company/khawit-solutions-pvt-ltd/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"
-                >
-                  <FaLinkedinIn /> LinkedIn
-                </a>
-                <a
-                  href="https://www.instagram.com/khawit_solutions/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"
-                >
-                  <FaInstagram /> Instagram
-                </a>
-                <a
-                  href="https://www.threads.com/@khawit_solutions"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"
-                >
-                  <FaThreads /> Threads
-                </a>
-                <a
-                  href="mailto:khawitsocialmedia@gmail.com"
-                  className="text-sm text-[#ece8df]/75 hover:text-[#bc9f70] transition-colors inline-flex items-center gap-2"
-                >
-                  <FiMail /> khawitsocialmedia@gmail.com
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between border-t border-[#33373d] pt-12 mt-4 gap-6">
-            <p className="text-2xl md:text-3xl font-medium text-[#f9f6f0]">
-              Ready to build something meaningful? <br className="md:hidden" />
-              <Link
-                href="/start-project"
-                className="text-[#bc9f70] hover:text-white transition-colors inline-flex items-center mt-2 md:mt-0 gap-2"
-              >
-                Let&apos;s build it. <FiArrowUpRight className="w-6 h-6" />
-              </Link>
-            </p>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#ece8df]/65 pt-8 border-t border-[#33373d]/50">
-            <span>© {new Date().getFullYear()} KHAWIT Solutions. All rights reserved.</span>
-            <div className="flex gap-6">
-              <Link href="/start-project" className="hover:text-[#bc9f70] transition-colors">
-                Start a Project
-              </Link>
-              <a href="#privacy" className="hover:text-[#bc9f70] transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#terms" className="hover:text-[#bc9f70] transition-colors">
-                Terms of Service
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </>
   );
 }

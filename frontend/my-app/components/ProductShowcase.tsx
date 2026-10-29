@@ -18,7 +18,7 @@ const headingFold = {
 
 export function ProductShowcase() {
   return (
-    <section className="relative py-24 md:py-32 section-shell overflow-hidden" id="work">
+    <section className="relative pt-6 md:pt-8 pb-6 md:pb-8 section-shell overflow-hidden" id="work">
       {/* Subtle ambient lighting behind glass cards */}
       <div className="absolute top-1/3 left-1/4 w-[650px] h-[450px] bg-gradient-to-br from-[#bc9f70]/10 via-[#5f8580]/10 to-transparent blur-[130px] pointer-events-none -z-10" />
 
@@ -30,7 +30,7 @@ export function ProductShowcase() {
           </div>
           <FoldText as="h2" {...headingFold} text="Made to move business forward.">
             <span className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight text-[#f9f6f0] leading-tight block">
-              Made to move <span className="font-cursive italic text-[#bc9f70] text-5xl sm:text-6xl md:text-7xl font-normal drop-shadow-sm">business forward.</span>
+              Made to move <span className="font-cursive italic text-[#bc9f70] text-5xl sm:text-6xl md:text-7xl font-normal">business forward.</span>
             </span>
           </FoldText>
           <p className="mt-4 text-[#ece8df] text-base md:text-lg leading-relaxed font-normal">
@@ -41,16 +41,16 @@ export function ProductShowcase() {
         {/* 2 Large Refined Charcoal Panels */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 reveal">
           {/* Card 1: 01 / DIGITAL PRODUCTS */}
-          <article className="group relative p-5 sm:p-8 md:p-10 rounded-[20px] sm:rounded-[24px] bg-[#41454b]/75 backdrop-blur-md border border-[#575b60]/50 hover:border-[#bc9f70]/70 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.35)] hover:shadow-[0_24px_55px_-8px_rgba(188,159,112,0.22)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+          <article className="relative p-5 sm:p-8 md:p-10 rounded-[20px] sm:rounded-[24px] bg-[#41454b]/75 backdrop-blur-md border border-[#575b60]/50 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.35)] flex flex-col justify-between overflow-hidden">
             {/* Top subtle sheen */}
-            <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none group-hover:via-[#bc9f70] transition-colors" />
+            <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
 
             <div>
               <div className="flex items-center justify-between mb-4 sm:mb-6">
                 <span className="px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#33373d] border border-white/15 font-mono text-[11px] sm:text-xs font-semibold tracking-wider text-[#bc9f70] shadow-sm">
                   01 / DIGITAL PRODUCTS
                 </span>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#33373d] border border-white/15 flex items-center justify-center text-[#bc9f70] group-hover:scale-105 group-hover:bg-[#bc9f70] group-hover:text-[#1a1c20] transition-all shadow-sm shrink-0">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#33373d] border border-white/15 flex items-center justify-center text-[#bc9f70] shadow-sm shrink-0">
                   <FiLayout className="w-4 h-4" />
                 </div>
               </div>
@@ -76,7 +76,7 @@ export function ProductShowcase() {
 
                 <Link
                   href="/start-project"
-                  className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#33373d] text-white hover:bg-[#bc9f70] hover:text-[#1a1c20] text-xs font-semibold tracking-wider uppercase transition-all duration-300 shadow-md hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#33373d] text-white hover:bg-[#bc9f70] hover:text-[#1a1c20] text-xs font-semibold tracking-wider uppercase transition-all duration-300 shadow-md"
                 >
                   <span>Explore the platform</span>
                   <FiArrowUpRight className="w-3.5 h-3.5" />
@@ -95,16 +95,16 @@ export function ProductShowcase() {
           </article>
 
           {/* Card 2: 02 / INTELLIGENT WORKFLOWS */}
-          <article className="group relative p-5 sm:p-8 md:p-10 rounded-[20px] sm:rounded-[24px] bg-[#41454b]/75 backdrop-blur-md border border-[#575b60]/50 hover:border-[#bc9f70]/70 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.35)] hover:shadow-[0_24px_55px_-8px_rgba(188,159,112,0.22)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+          <article className="relative p-5 sm:p-8 md:p-10 rounded-[20px] sm:rounded-[24px] bg-[#41454b]/75 backdrop-blur-md border border-[#575b60]/50 shadow-[0_20px_45px_-8px_rgba(0,0,0,0.35)] flex flex-col justify-between overflow-hidden">
             {/* Top subtle sheen */}
-            <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none group-hover:via-[#bc9f70] transition-colors" />
+            <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
 
             <div>
               <div className="flex items-center justify-between mb-4 sm:mb-6">
                 <span className="px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#33373d] border border-white/15 font-mono text-[11px] sm:text-xs font-semibold tracking-wider text-[#bc9f70] shadow-sm">
                   02 / INTELLIGENT WORKFLOWS
                 </span>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#33373d] border border-white/15 flex items-center justify-center text-[#bc9f70] group-hover:scale-105 group-hover:bg-[#bc9f70] group-hover:text-[#1a1c20] transition-all shadow-sm shrink-0">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#33373d] border border-white/15 flex items-center justify-center text-[#bc9f70] shadow-sm shrink-0">
                   <FiGitBranch className="w-4 h-4" />
                 </div>
               </div>

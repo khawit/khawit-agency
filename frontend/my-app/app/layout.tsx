@@ -3,6 +3,9 @@ import { Geist, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { AgencyExperience } from "@/components/agency-experience";
+import { Footer } from "@/components/Footer";
+import { ContentProtection } from "@/components/ContentProtection";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,9 +14,9 @@ const geistSans = Geist({
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-cursive",
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
   subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.khawitsolutions.com";
@@ -93,7 +96,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="bg-geometrics-shape-1" />
           <div className="bg-geometrics-shape-2" />
         </div>
-        <SmoothScroll>{children}</SmoothScroll>
+        <ContentProtection />
+        <SmoothScroll>
+          <AgencyExperience />
+          <div className="flex-1 flex flex-col">
+            {children}
+          </div>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
